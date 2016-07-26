@@ -1,7 +1,13 @@
 {
-  "name": "FullstackGeneratedApp",
+  "name": "Spell Store",
   "version": "1.0.0",
-  "description": "A generated project at Fullstack Academy",
+  "description": "The premiere shopping destination for wizards",
+  "contributors": [
+    {"name": "Yoo Jung Dan"},
+    {"name": "Samantha Lowe"},
+    {"name": "Margaret Neterval"},
+    {"name": "Dana Norwood"}
+  ],
   "main": "server/start.js",
   "scripts": {
     "start": "nodemon --watch server -e js,html server/start.js",
