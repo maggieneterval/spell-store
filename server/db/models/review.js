@@ -10,9 +10,6 @@ module.exports = db.define('review', {
   },
   content: {
     type: Sequelize.TEXT,
-    validate: {
-      min: 4
-    },
     allowNull: false
   },
   rating: {
