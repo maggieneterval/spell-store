@@ -65,7 +65,7 @@ var seedProducts = function () {
             description: 'A hex that was used to make the target\'s shoes stick to the ground.',
             deliverable: 'Colloshoo',
             photo: 'http://placehold.it/400x400',
-            inventory: 30
+            inventory: 35
         }
     ];
 
