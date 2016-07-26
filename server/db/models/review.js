@@ -17,6 +17,6 @@ module.exports = db.define('review', {
   },
   rating: {
     type: Sequelize.INTEGER,
-    allowNull: true
+    allowNull: false
   }
 })
