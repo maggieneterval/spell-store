@@ -20,6 +20,7 @@ name in the environment files.
 var chalk = require('chalk');
 var db = require('./server/db');
 var User = db.model('user');
+var Product = db.model('product');
 var Promise = require('sequelize').Promise;
 
 var seedUsers = function () {
@@ -35,6 +36,7 @@ var seedUsers = function () {
         }
     ];
 
+
     var creatingUsers = users.map(function (userObj) {
         return User.create(userObj);
     });
@@ -43,9 +45,45 @@ var seedUsers = function () {
 
 };
 
+var seedProducts = function () {
+
+    var products = [
+        {
+            title: 'Amplifying Charm',
+            category: 'Charm',
+            description: ' A charm that can be used to amplify the targeted sound, be it a person\'s voice or a piece of equipment.',
+            price: 10,
+            deliverable: 'Sonorus',
+            photo: 'http://placehold.it/400x400',
+            inventory: 20
+
+        },
+        {
+            title: 'Stickfast Hex',
+            category: 'Hex',
+            price: 15,
+            description: 'A hex that was used to make the target\'s shoes stick to the ground.',
+            deliverable: 'Colloshoo',
+            photo: 'http://placehold.it/400x400',
+            inventory: 35
+        }
+    ];
+
+   
+    var creatingProducts = products.map(function (productObj) {
+        return Product.create(productObj);
+    });
+
+    return Promise.all(creatingProducts);
+
+};
+
 db.sync({ force: true })
     .then(function () {
         return seedUsers();
+    })
+    .then(function () {
+        return seedProducts();
     })
     .then(function () {
         console.log(chalk.green('Seed successful!'));

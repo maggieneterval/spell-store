@@ -5,7 +5,7 @@ var db = require('../_db');
 module.exports = db.define('review', {
   date: {
     type: Sequelize.DATE,
-    default: Sequelize.NOW,
+    defaultValue: Sequelize.NOW,
     allowNull: false
   },
   content: {
@@ -16,7 +16,7 @@ module.exports = db.define('review', {
     allowNull: false
   },
   rating: {
-    type: Sequelize.ENUM(1,2,3,4,5),
+    type: Sequelize.INTEGER,
     allowNull: false
   }
 })
