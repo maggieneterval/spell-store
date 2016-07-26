@@ -8,9 +8,6 @@ var db = require('../_db');
 module.exports = db.define('user', {
     username:{
         type: Sequelize.STRING,
-        validate:{
-            validate: { min: 4, max: 10 }
-        },
         unique: true,
         allowNull: false
     },
