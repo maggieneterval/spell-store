@@ -26,11 +26,13 @@ var Promise = require('sequelize').Promise;
 var seedUsers = function () {
 
     var users = [
-        {
+        {   
+            username: 'joseph',
             email: 'testing@fsa.com',
             password: 'password'
         },
         {
+            username: 'obama',
             email: 'obama@gmail.com',
             password: 'potus'
         }
@@ -84,6 +86,7 @@ var seedProducts = function () {
             category: 'Jinx',
             description: 'The Dancing Feet spell has its origins in ancient Italy, but is best remembered for its improper usage by Warlock Zaccaria Innocenti who is credited with conjuring a dance within Mt. Vesuvius in 79 AD. It is used to force another person\'s legs to begin dancing uncontrollably. The spell requires a clear, unobstructed view of the target to be successfully cast.',
             price: '5000',
+            photo: 'http://placehold.it/400x400',
             deliverable: 'Tarantallegra',
             inventory: 10
         },
@@ -92,6 +95,7 @@ var seedProducts = function () {
             category: 'Healing Spell',
             description: 'A healing spell that clears the target person\'s throat if it is blocked; an example would be if one was choking.',
             price: '6000',
+            photo: 'http://placehold.it/400x400',
             deliverable: 'Anapneo',
             inventory: 5
         },
@@ -100,6 +104,7 @@ var seedProducts = function () {
             category: 'Curse',
             description: 'The Full Body-Bind Curse also known as the Body Freezing Spell is a curse that paralyses the opponent. It is often used by inexperienced or young wizards in duelling. This curse can be found in Curses and Counter-Curses by Vindictus Viridian.',
             price: '7000',
+            photo: 'http://placehold.it/400x400',
             deliverable : 'Petrificus Totalus',
             inventory: 5
 
@@ -109,6 +114,7 @@ var seedProducts = function () {
             category: 'Protective enchantment', 
             description: ' A stronger version of the Shield Charm which protects a very large area against highly Dark Magic. It causes anything within the ranges of Dark Magic to rebound off the shield.',
             price: '8000',
+            photo: 'http://placehold.it/400x400',
             deliverable: 'Protego horribilis',
             inventory: 10
         }
