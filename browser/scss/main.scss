@@ -23,6 +23,17 @@ body {
     margin-bottom: 0;
 }
 
+#category-navbar {
+  ul {
+  padding-left: 50px;
+  padding-right: 50px;
+  }
+  a {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
 @import 'directives/main';
 @import 'home/main';
 @import 'about/main';
