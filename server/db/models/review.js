@@ -10,13 +10,10 @@ module.exports = db.define('review', {
   },
   content: {
     type: Sequelize.TEXT,
-    validate: {
-      min: 4
-    },
     allowNull: false
   },
   rating: {
-    type: Sequelize.ENUM(1,2,3,4,5),
+    type: Sequelize.INTEGER,
     allowNull: false
   }
 })
