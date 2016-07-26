@@ -19,6 +19,10 @@ body {
   margin: 0 auto;
 }
 
+.navbar {
+    margin-bottom: 0;
+}
+
 @import 'directives/main';
 @import 'home/main';
 @import 'about/main';
