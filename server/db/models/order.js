@@ -4,9 +4,6 @@ var Sequelize = require('sequelize');
 var db = require('../_db');
 
 module.exports = db.define('order', {
-	order_id: {
-		type: Sequelize.INTEGER
-	},
     status: {
         type: Sequelize.ENUM, values: ['pending', 'complete']
     },
