@@ -1,4 +1,4 @@
-app.directives('productItem', function(){
+app.directive('productItem', function(){
 	return {
 		restrict: 'E',
 		scope: {
