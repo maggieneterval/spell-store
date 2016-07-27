@@ -1,3 +1,21 @@
+body {
+  background: #fdfdfd; 
+  padding-bottom: 75px;
+}
+
+@font-face {
+    font-family: 'lumoslatinoregular';
+    src: url('../fonts/lumoslatino-webfont.woff2') format('woff2'),
+         url('../fonts/lumoslatino-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h1, h2, h3 {
+  font-family: 'lumoslatinoregular', serif;
+}
+
 #home {
   fullstack-logo {
     padding-top: 30px;
@@ -10,16 +28,13 @@
   }
 }
 
-body {
-  background: #fdfdfd; 
-  padding-bottom: 75px;
+#herobanner {
+  width: 100%;
 }
 
 
 .spell-category-img img {
-    display: block;
-    margin: auto;
-    width: 60%;
+  max-width: 100%;
 }
 
 .spell-category-img {
@@ -27,8 +42,3 @@ body {
 
 }
 
-
-#herobanner {
-  width: 90%;
-  margin: 0 auto;
-}
