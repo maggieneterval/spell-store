@@ -1,4 +1,4 @@
-app.directives('reviewItem', function(){
+app.directive('reviewItem', function(){
 	return {
 		restrict: 'E',
 		scope: {
