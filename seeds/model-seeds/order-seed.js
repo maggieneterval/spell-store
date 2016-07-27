@@ -9,7 +9,7 @@ var seedOrders = function () {
             shipping_address: '94 Hanover Drive, Titusville, FL 32780',
             shipping_status: helpChoose('shipping_status'),
             purchaser_user: 1,
-            taget_user: 2
+            target_user: 2
         },
         {
             status: helpChoose('status'),
@@ -17,7 +17,7 @@ var seedOrders = function () {
             shipping_address: '542 Goldfield Court, Lafayette, IN 47905',
             shipping_status: helpChoose('shipping_status'),
             purchaser_user: 2,
-            taget_user: 1
+            target_user: 1
         },
         {
             status: helpChoose('status'),
@@ -25,7 +25,7 @@ var seedOrders = function () {
             shipping_address: '57 King Lane, Pomona, CA 91768',
             shipping_status: helpChoose('shipping_status'),
             purchaser_user: 1,
-            taget_user: 2
+            target_user: 2
         },
         {
             status: helpChoose('status'),
@@ -33,7 +33,7 @@ var seedOrders = function () {
             shipping_address: '4 South Edgewood St., Natick, MA 01760',
             shipping_status: helpChoose('shipping_status'),
             purchaser_user: 2,
-            taget_user: 1
+            target_user: 1
         },
         {
             status: helpChoose('status'),
@@ -41,7 +41,7 @@ var seedOrders = function () {
             shipping_address: '213 Roosevelt Drive, Dracut, MA 01826',
             shipping_status: helpChoose('shipping_status'),
             purchaser_user: 1,
-            taget_user: 2
+            target_user: 2
         },
         {
             status: helpChoose('status'),
@@ -49,7 +49,7 @@ var seedOrders = function () {
             shipping_address: '971 Hilldale St., Macomb, MI 48042',
             shipping_status: helpChoose('shipping_status'),
             purchaser_user: 2,
-            taget_user: 1
+            target_user: 1
         },
         {
             status: helpChoose('status'),
@@ -57,7 +57,7 @@ var seedOrders = function () {
             shipping_address: '417 Grant Drive, Marion, NC 28752',
             shipping_status: helpChoose('shipping_status'),
             purchaser_user: 1,
-            taget_user: 2
+            target_user: 2
         },
         {
             status: helpChoose('status'),
@@ -65,7 +65,7 @@ var seedOrders = function () {
             shipping_address: '38 Grandrose Ave. Spartanburg, SC 29301',
             shipping_status: helpChoose('shipping_status'),
             purchaser_user: 2,
-            taget_user: 1
+            target_user: 1
         },
         {
             status: helpChoose('status'),
@@ -73,7 +73,7 @@ var seedOrders = function () {
             shipping_address: '4 Pacific St., Pelham, AL 35124',
             shipping_status: helpChoose('shipping_status'),
             purchaser_user: 1,
-            taget_user: 2
+            target_user: 2
         },
         {
             status: helpChoose('status'),
@@ -81,7 +81,7 @@ var seedOrders = function () {
             shipping_address: '263 Brickell Road, North Miami Beach, FL 33160',
             shipping_status: helpChoose('shipping_status'),
             purchaser_user: 2,
-            taget_user: 1
+            target_user: 1
         }
     ];
    
