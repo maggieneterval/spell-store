@@ -22,6 +22,7 @@ var db = require('../server/db');
 var seedUsers = require('./model-seeds/user-seed');
 var seedProducts = require('./model-seeds/product-seed.js');
 var seedReviews = require('./model-seeds/review-seed.js');
+var seedOrders = require('./model-seeds/order-seed.js');
 var Promise = require('sequelize').Promise;
 
 db.sync({ force: true })
@@ -30,6 +31,9 @@ db.sync({ force: true })
     })
     .then(function () {
         return seedProducts();
+    })
+    .then(function(){
+        return seedOrders();
     })
     .then(function () {
         return seedReviews();
