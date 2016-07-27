@@ -1,7 +1,8 @@
 'use strict';
 
 var router = require('express').Router();
-var Product = require('../../../db/models/product');
+var db = require('../../../db');
+var Product = db.model('product');
 module.exports = router;
 
 router.get('/category/:category', function (req, res, next) {
