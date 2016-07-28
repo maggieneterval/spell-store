@@ -7,12 +7,19 @@ var seedUsers = function () {
         {   
             username: 'joseph',
             email: 'testing@fsa.com',
-            password: 'password'
+            password: 'password',
+            isRegistered: true
         },
         {
             username: 'obama',
             email: 'obama@gmail.com',
-            password: 'potus'
+            password: 'potus',
+            isRegistered: true
+        },
+        {
+            username: 'Piper Halliwell',
+            email: 'phalliwell@gmail.com',
+            isRegistered: false
         }
     ];
 
