@@ -4,71 +4,71 @@ var OrderDetails = db.model('order_detail')
 var seedOrderDetails = function () {
     var orderDetails = [
     	{ 
-    		order_id: 1,
-    		product_id: 1,
+    		orderId: 1,
+    		productId: 1,
     		quantity: 1,
     		price: 500
     	},
 
     	{
-    		order_id: 2,
-    		product_id: 4,
+    		orderId: 2,
+    		productId: 4,
     		quantity: 1,
     		price: 5000
     	},
 
     	{
-    		order_id: 3,
-    		product_id: 6,
+    		orderId: 3,
+    		productId: 6,
     		quantity: 1,
     		price: 7000
     	},
 
     	{
-    		order_id: 4,
-    		product_id: 7,
+    		orderId: 4,
+    		productId: 7,
     		quantity: 1,
     		price: 8000
     	},
 
     	{
-    		order_id: 5,
-    		product_id: 2,
+    		orderId: 5,
+    		productId: 2,
     		quantity: 1,
     		price: 1000
     	},
 
     	{
-    		order_id: 6,
-    		product_id: 7,
+    		orderId: 6,
+    		productId: 7,
     		quantity: 1,
     		price: 8000
     	},
 
     	{
-    		order_id: 7,
-    		product_id: 3,
+    		orderId: 7,
+    		productId: 3,
     		quantity: 1,
     		price: 3000
     	},
 
     	{
-    		order_id: 8,
-    		product_id: 5,
+    		orderId: 8,
+    		productId: 5,
     		quantity: 3,
     		price: 6000
     	},
 
     	{
-    		order_id: 9,
-    		product_id: 2,
+    		orderId: 9,
+    		productId: 2,
     		quantity: 9,
     		price: 1000
     	},
 
     	{
-    		order_id: 10,
-    		product_id: 2,
+    		orderId: 10,
+    		productId: 2,
     		quantity: 1,
     		price: 1000
     	}
