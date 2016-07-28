@@ -1,7 +1,7 @@
 <section>
 <div class="container">
 	<h1>Shop All Products</h1>
-    <div class="row" ng-repeat="product in allProducts">
+    <div class="row" ng-repeat="product in allProducts | searchFor: searchString">
         <product-item product="product">
         </product-item>
     </div>
