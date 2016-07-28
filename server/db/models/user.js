@@ -20,11 +20,14 @@ module.exports = db.define('user', {
         allowNull: false
     },
     password: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
     },
     salt: {
         type: Sequelize.STRING
+    },
+    isRegistered: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false 
     },
     twitter_id: {
         type: Sequelize.STRING
