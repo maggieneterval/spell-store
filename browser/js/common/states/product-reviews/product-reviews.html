@@ -1,0 +1,15 @@
+<div class="col-lg-12">
+
+	<br/>
+	<h1> Please submit a review </h1>
+	<form name="reviewForm" ng-submit="reviewForm.$valid &&submit(newReview)">
+		<input type="text" name="content" ng-model="newReview.content" ng-minlength="4" required/>
+		<magic-rating></magic-rating>
+		<button>Submit</button>
+	</form>
+</div>
+<div class="col-lg-12">
+        <review-item ng-repeat = "review in reviews" review='review'>
+        </review-item>
+	   <magic-rating></magic-rating>
+</div>
