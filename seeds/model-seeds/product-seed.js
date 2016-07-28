@@ -92,7 +92,7 @@ var seedProducts = function () {
             category: 'Charm',
             description: 'Launches the target into the air and emits red light from the wand.',
             price: '7000',
-            photo: 'http://placehold.it/400x400',
+            photo: generatePhoto(),
             deliverable : 'Alarte Ascendare',
             inventory: 5
 
