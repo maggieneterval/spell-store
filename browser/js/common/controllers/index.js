@@ -1,16 +1,9 @@
-app.controller('MainCtrl', function ($scope) {
+app.controller('MainCtrl', function ($scope, $state) {
     $scope.searchString;
+    $scope.changeState = function () {
+      $state.go('allProducts');
+    }
 });
-
-app.controller('searchSubmit', function ($scope, $state, $rootScope) {
-    // $scope.searchString; //from search input
-    // $scope.submitSearch = function () {
-    //     $rootScope.searchString = $scope.searchString;
-    //     $state.go('allProducts');
-    //     $rootScope.searchString = '';
-    //     $scope.searchString = '';
-    // }
-})
 
 app.filter('searchFor', function () {
     return function(arr, searchString){
