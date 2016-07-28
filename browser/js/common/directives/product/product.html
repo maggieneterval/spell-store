@@ -1,12 +1,33 @@
-<div class="row">
-        <div class="col-lg-4">
-        	<img ng-src="{{product.photo}}"/>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 spell-category-img">
+            <img src="{{product.photo}}"></img>
         </div>
-        <div class="col-lg-4">
-        	<p>{{product.title}}</p>
-        	<p>{{product.description}}</p>
+        <div class="col-lg-9">
+            <h2>{{product.title}}</h2>
+            <p>{{product.category}}</p>
+            <p>{{product.description}}</p>
+            <p>Price: {{product.price}} Knuts</p>
+            <button>Add to your cauldron</button>
         </div>
-        <div class="col-lg-4">
-        	<p>{{product.price}}</p>
-        </div>
+    </div>
 </div>
+
+
+
+
+
+
+
+
+<!-- <div class="row">
+
+        <div class="col-lg-1"></div>
+        <div class="col-lg-4">
+        	<h2>{{product.title}}</h2>
+                <p>{{product.category}}</p>
+        	<p>{{product.description}}</p>
+                <p>Price: {{product.price}} Knuts</p>
+                <button>Purchase</button>
+        </div>
+</div> -->
