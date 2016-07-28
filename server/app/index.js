@@ -30,6 +30,10 @@ module.exports = function (db) {
 
     });
 
+    app.get('/admin', function (req, res) {
+        res.sendFile(__dirname + '/views/admin/adminIndex.html');
+    })
+
     app.get('/*', function (req, res) {
         res.sendFile(app.get('indexHTMLPath'));
     });
