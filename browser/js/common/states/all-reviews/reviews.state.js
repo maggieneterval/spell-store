@@ -3,7 +3,7 @@ app.config(function ($stateProvider) {
     url: '/reviews',
     templateUrl: '/js/common/states/all-reviews/reviews.html',
     controller: function ($scope, ReviewFactory) {
-      ReviewFactory.fetchAll({productId:2})
+      ReviewFactory.fetchAll({rating: 5})
       .then(function(reviews){
         console.log("print out",reviews);
         $scope.reviews = reviews;

@@ -4,13 +4,13 @@ var Review = db.model('review');
 module.exports = router;
 
 router.get('/', function(req,res,next){
-	return Review.findAll({where: req.query})
+	return Review.findAll({where: req.body})
 	.then(reviews => res.json(reviews))
 	.catch(next);
 })
 
 router.param('id', function (req, res, next, id) {
-	Review.findById(id)
+	return Review.findById(id)
 	.then(function (review) {
 		if (review) {
 			req.review = review;
