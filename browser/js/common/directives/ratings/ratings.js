@@ -10,7 +10,7 @@ app.directive('magicRating', function(){
         		return [1,2,3,4,5];
         	}
         	scope.clicked = function(index){
-        		console.log(index+1);
+        		scope.rating = index;
         	}	
     	}
   	}
