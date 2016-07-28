@@ -1,10 +1,15 @@
 app.config(function ($stateProvider) {
-  $stateProvider.state('productReviews', {
+  $stateProvider.state('productDetails.review', {
     //Should this be nested under the product details state?
-    url: '/products/:productId/reviews',
+    url: '/reviews',
     templateUrl: '/js/common/states/product-reviews/product-reviews.html',
-    controller: function ($scope, ReviewFactory, $stateParams) {
-      ReviewFactory.fetchAll({productId: $stateParams.productId})
+    resolve: { 
+      productId: function($stateParams){
+        return $stateParams.id;
+      } 
+    },
+    controller: function ($scope, ReviewFactory, productId) {
+      ReviewFactory.fetchAll({productId: productId})
       .then(function(reviews){
         $scope.reviews = reviews;
       })
