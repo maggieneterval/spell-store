@@ -71,7 +71,19 @@ var seedProducts = function () {
             photo: 'http://placehold.it/400x400',
             deliverable: 'Protego horribilis',
             inventory: 10
+        },
+
+          {
+            title: 'Launch Spell',
+            category: 'Charm',
+            description: 'Launches the target into the air and emits red light from the wand.',
+            price: '7000',
+            photo: 'http://placehold.it/400x400',
+            deliverable : 'Alarte Ascendare',
+            inventory: 5
+
         }
+
     ];
    
     var creatingProducts = products.map(function (productObj) {
@@ -83,3 +95,16 @@ var seedProducts = function () {
 };
 
 module.exports = seedProducts;
+
+
+
+
+
+
+
+
+
+
+
+
+
