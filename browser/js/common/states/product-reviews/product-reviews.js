@@ -1,11 +1,10 @@
 app.config(function ($stateProvider) {
-  $stateProvider.state('allReviews', {
-    url: '/reviews',
+  $stateProvider.state('productReviews', {
+    url: '/products/:productId/reviews',
     templateUrl: '/js/common/states/all-reviews/reviews.html',
-    controller: function ($scope, ReviewFactory) {
-      ReviewFactory.fetchAll({rating: 5})
+    controller: function ($scope, ReviewFactory, $stateParams) {
+      ReviewFactory.fetchAll({productId: $stateParams.productId})
       .then(function(reviews){
-        console.log("print out",reviews);
         $scope.reviews = reviews;
       })
       .catch(console.error())

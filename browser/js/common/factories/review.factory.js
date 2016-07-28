@@ -5,7 +5,7 @@ app.factory('ReviewFactory',function($http){
 	return {
 		fetchAll: function(filter){
 			var condition = filter || {};
-			return $http.get('/api/reviews', {})
+			return $http.get('/api/reviews', {params: condition})
 			.then(getData)
 			.catch(console.error());
 		},
