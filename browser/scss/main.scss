@@ -2,6 +2,22 @@
   box-sizing: border-box;
 }
 
+
+@font-face {
+    font-family: 'lumoslatinoregular';
+    src: url('../fonts/lumoslatino-webfont.woff2') format('woff2'),
+         url('../fonts/lumoslatino-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+#nav-store-name {
+  font-family: 'lumoslatinoregular', serif;
+  font-size: 350%;
+}
+
 body {
   background: #fdfdfd;
   overflow-y: scroll;
