@@ -4,6 +4,7 @@
 
 body {
   background: #fdfdfd;
+  overflow-y: scroll;
 }
 
 @mixin clearfix {
@@ -25,12 +26,12 @@ body {
 
 #category-navbar {
   ul {
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
   }
   a {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 

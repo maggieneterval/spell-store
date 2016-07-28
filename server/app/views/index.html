@@ -14,13 +14,13 @@
     <script src="/socket.io-client/socket.io.js"></script>
     <script src="/main.js"></script>
 </head>
-<body ng-app="FullstackGeneratedApp">
+<body ng-app="FullstackGeneratedApp" ng-controller="MainCtrl">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Spell Store</a>
+                        <a class="navbar-brand" ui-sref="home">Spell Store</a>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -37,6 +37,15 @@
         <div class="container-fluid">
             <div>
                 <ul class="nav navbar-nav">
+                    <li>
+                        <!-- <div ng-controller="ControllerTest"> -->
+                         <form class="navbar-form" name="searchBar" ng-submit="submitSearch()">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search for Spells!" ng-model="searchString" ng-keypress="changeState()">
+                            </div>
+                        </form>
+                        <!-- </div> -->
+                    </li>
                     <li><a ui-sref="allProducts">All Spells</a></li>
                     <li><a ui-sref="singleCategory({category: 'Charm'})">Charm</a></li>
                     <li><a ui-sref="singleCategory({category: 'Transfiguration'})">Transfiguration</a></li>
