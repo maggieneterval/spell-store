@@ -14,7 +14,7 @@
     <script src="/socket.io-client/socket.io.js"></script>
     <script src="/main.js"></script>
 </head>
-<body ng-app="FullstackGeneratedApp">
+<body ng-app="FullstackGeneratedApp" controller="MainCtrl">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="row">
@@ -37,6 +37,15 @@
         <div class="container-fluid">
             <div>
                 <ul class="nav navbar-nav">
+                    <!-- <li ng-controller="searchSubmit"> -->
+                    <li>
+                         <form class="navbar-form" name="searchBar" ng-submit="submitSearch()">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search for Spells!" ng-model="searchString">
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                    </li>
                     <li><a ui-sref="allProducts">All Spells</a></li>
                     <li><a ui-sref="singleCategory({category: 'Charm'})">Charm</a></li>
                     <li><a ui-sref="singleCategory({category: 'Transfiguration'})">Transfiguration</a></li>
