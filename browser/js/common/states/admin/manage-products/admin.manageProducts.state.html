@@ -15,8 +15,9 @@
                     <input required class="form-control" id="productInventory" ng-model="selectedProduct.inventory" />
                 <label for="productDeliverable">Deliverable: </label>
                     <input required class="form-control" id="productDeliverable" ng-model="selectedProduct.deliverable" />
-                <button type="submit" class="btn btn-primary" ng-disabled="!productForm.$valid">Submit</button>
+                <button type="submit" class="btn btn-primary" ng-disabled="!productForm.$valid">Update product</button>
             </form>
+             <button class="btn btn-danger" ng-click="deleteProduct()">Delete product</button>
         </div>
     </div>
 </div>

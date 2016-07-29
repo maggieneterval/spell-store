@@ -11,8 +11,9 @@
                     <input required class="form-control" id="userPassword" ng-model="selectedUser.password" />
                 <label for="userIsAdmin">Admin: </label>
                     <input required class="form-control" id="userIsAdmin" ng-model="selectedUser.isAdmin" />
-                <button type="submit" class="btn btn-primary" ng-disabled="!userForm.$valid">Submit</button>
+                <button type="submit" class="btn btn-primary" ng-disabled="!userForm.$valid">Update user</button>
             </form>
+             <button class="btn btn-danger" ng-click="deleteUser()">Delete user</button>
         </div>
     </div>
 </div>

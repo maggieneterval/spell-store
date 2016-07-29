@@ -17,8 +17,9 @@
                     <input required class="form-control" id="orderShippingStatus" ng-model="selectedOrder.shipping_status" />
                 <label for="orderUserId">User ID: </label>
                     <input required class="form-control" id="orderUserId" ng-model="selectedOrder.userId" />
-                <button type="submit" class="btn btn-primary" ng-disabled="!editOrderForm.$valid">Submit</button>
+                <button type="submit" class="btn btn-primary" ng-disabled="!editOrderForm.$valid">Update order</button>
             </form>
+            <button class="btn btn-danger" ng-click="deleteOrder()">Delete order</button>
         </div>
     </div>
 </div>
