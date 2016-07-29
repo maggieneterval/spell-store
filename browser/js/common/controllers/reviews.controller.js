@@ -1,26 +1,25 @@
-app.controller('ReviewCtrl', function($scope, ReviewFactory){
-	// ReviewFactory.fetchAll({productId: $scope.product.id})
- //      .then(function(reviews){
- //        $scope.reviews = reviews;
- //      })
- //      .catch(console.error())
- 		$scope.isEditing = false;
-      $scope.submit = function(reviewId){
-      	if(!reviewId){
+app.controller('ReviewCtrl', function($scope, ReviewFactory, $state){
+      $scope.submit = function(reviewId, productId){
 	      	ReviewFactory.add($scope.newReview)
 	      	.then(function(createdReview){
 	      		$scope.reviews.push(createdReview);
-	      	}) 
-      	}else{
-      		ReviewFactory.update(reviewId, review)
-      		.then(function(updated){
-      			$scope.isEditing = false;
-      		})
-      	}
+	      	})
+
+	      	//Testing create
+	      	// $scope.newReview = [];
+	      	// var newReview = {
+	      	// 	rating: 1,
+	      	// 	content: "Not the best one i have had"
+	      	// }
+	      	// ReviewFactory.add(newReview)
+	      	// .then(function(createdReview){
+	      	// 	$scope.reviews.push(createdReview);
+	      	// })
       };
 
       $scope.edit = function(reviewId){
       	$scope.isEditing = true;
+      	$state.go('productDetails.review', {reviewId: reviewId})
       	//update changes
       };
 

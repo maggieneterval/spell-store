@@ -16,17 +16,29 @@
                         <p>{{review.content}}</p>
                 </div>
         </div>
-</div> -->
+</div>
+ -->
+<div class="col-lg-12">
+        <div class="row panel panel-primary">
+                <div class="panel-heading">
+                        <div class="col-lg-4 panel-title" >
+                                {{review.user.username}}
+                        </div>
+                        <div class="col-lg-4 panel-title" >
+                                {{review.rating}}
+                                <magic-rating></magic-rating>
+                        </div>
+                        <div class="col-lg-4 panel-title">
+                                {{review.date}}
+                        </div>
+                </div>
+                <div class="panel-body">
+                        <div class="row">
+                                <div class="col-lg-12">
+                                        {{review.content}}
+                                </div>
+                        </div>
+                </div>
+          </div>
+</div>
 
-<!--made all fields readonly!!-->
-
-<form name="reviewForm" ng-submit="reviewForm.$valid && submit(review)">
-        <label>User</label>
-        <input ng-readonly='true' type="text" name="username" ng-model="review.username"/>
-         <label>Rating</label>
-        <input ng-readonly='true' type="text" name="rating" ng-model="review.rating" required/>
-         <label>Review</label>
-        <input ng-readonly='true' type="text" name="content" ng-model="review.content" ng-minlength="4" required/>
-        <magic-rating></magic-rating>
-        <button>Submit</button>
-</form>
