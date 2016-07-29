@@ -4,8 +4,7 @@ var Review = db.model('review');
 module.exports = router;
 
 router.get('/', function(req,res,next){
-	return Review.findAll({where: req.query
-	})
+	return Review.findAll({where: req.query})
 	.then(reviews => res.json(reviews))
 	.catch(next);
 })

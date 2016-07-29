@@ -8,7 +8,7 @@ app.config(function($stateProvider){
 			ProductsFactory.fetchById($stateParams.id)
 			.then(function(product){
 				$scope.product = product;
-				$scope.reviews = $scope.product.reviews;
+				$scope.reviews = product.reviews
 			})
 			.catch(console.error())	
 		}

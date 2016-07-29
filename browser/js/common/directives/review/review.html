@@ -1,4 +1,4 @@
-<div class="col-lg-12">
+<!-- <div class="col-lg-12">
         <div class="row">
                 <div class="col-lg-4" >
                 	<p>{{review.user.username}}</p>
@@ -16,4 +16,17 @@
                         <p>{{review.content}}</p>
                 </div>
         </div>
-</div>
+</div> -->
+
+<!--made all fields readonly!!-->
+
+<form name="reviewForm" ng-submit="reviewForm.$valid && submit(review)">
+        <label>User</label>
+        <input ng-readonly='true' type="text" name="username" ng-model="review.username"/>
+         <label>Rating</label>
+        <input ng-readonly='true' type="text" name="rating" ng-model="review.rating" required/>
+         <label>Review</label>
+        <input ng-readonly='true' type="text" name="content" ng-model="review.content" ng-minlength="4" required/>
+        <magic-rating></magic-rating>
+        <button>Submit</button>
+</form>

@@ -3,8 +3,22 @@
 	<div>
 		<product-item product="product"></product-item>
 	</div>
-	<div>
-		<review-item ng-repeat='review in reviews' review='review'></review-item> 
+
+	<div ng-controller='ReviewCtrl'>
+		<div class="col-lg-12">
+			<br/>
+			<h1> Please submit a review </h1>
+			<form name="reviewForm" ng-submit="reviewForm.$valid && submit(newReview)">
+				<input type="text" name="content" ng-model="newReview.content" ng-minlength="4" required/>
+				<magic-rating></magic-rating>
+				<button>Submit</button>
+			</form>
+		</div>
+		<div class="col-lg-12" ng-repeat = "review in reviews">
+	        <review-item review='review'>
+	        </review-item>
+	        <button ng-click='edit(review.id)'>Edit</button>
+	        <button ng-click='delete(review.id)'>Delete</button>
+		</div>
 	</div>
-	<ui-view></ui-view>
 </div>

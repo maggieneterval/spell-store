@@ -3,6 +3,7 @@
 var router = require('express').Router();
 var db = require('../../../db');
 var Product = db.model('product');
+var Review = db.model('review');
 module.exports = router;
 
 router.get('/category/:category', function (req, res, next) {
@@ -21,7 +22,8 @@ router.get('/:id', function (req, res, next) {
     Product.findOne({
         where: {
         id: req.params.id
-        }
+        },
+        include: [Review]
     })
     .then(function (products) {
         res.status(200).send(products);

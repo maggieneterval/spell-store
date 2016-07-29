@@ -4,13 +4,8 @@ app.directive('reviewItem', function(ReviewFactory){
 		scope: {
 			review: '='
 		},
-		templateUrl: 'js/common/directives/review/review.html'
-		// link: function(scope){
-		// 	ReviewFactory.fetchOne(1)
-		// 	.then(function(review){
-		// 		scope.review = review;
-		// 	});
-
-		// }
+		templateUrl: 'js/common/directives/review/review.html',
+		link: function(scope){
+		}
 	}
 })
