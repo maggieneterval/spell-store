@@ -17,13 +17,22 @@ app.controller('ReviewCtrl', function($scope, ReviewFactory, $state){
 	      	// })
       };
 
+      var refresh = function(productId){
+      	ReviewFactory.fetchAll({productId: productId})
+      	.then(function(allReviews){
+      		$scope.reviews = allReviews;
+      	})
+      }
       $scope.edit = function(reviewId){
       	$scope.isEditing = true;
       	$state.go('productDetails.review', {reviewId: reviewId})
       	//update changes
       };
 
-      $scope.delete = function(reviewId){
-
+      $scope.delete = function(reviewId, productId){
+      	ReviewFactory.destroy(reviewId)
+      	.then(function(destroyedReview){
+      		refresh(productId);
+      	})
       };
 })

@@ -33,13 +33,13 @@ router.get('/:id', function(req,res,next){
 	return res.json(req.review);
 })
 
-router.put(':/id', function(req,res,next){
+router.put('/:id', function(req,res,next){
 	return req.review.update(req.body)
 	.then(updatedReview => res.json(updatedReview))
 	.catch(next);
 })
 
-router.delete(':/id', function(req,res,next){
+router.delete('/:id', function(req,res,next){
 	return req.review.destroy()
 	.then(destroyedReview => res.json(destroyedReview))
 	.catch(next);

@@ -15,7 +15,7 @@
 		        </div>
 		        <div class="form-group">
 		                <label>Rating</label>
-		                <input class="form-control" type="number" name="rating" ng-model="review.rating" required/>
+		                <input class="form-control" type="number" max="5" min="1" name="rating" ng-model="review.rating" required/>
 		        </div>
 		        <div class="form-group">
 		                <label>Review</label>
@@ -32,7 +32,7 @@
 	        <review-item review='review' isEditing=''>
 	        </review-item>
 	        <button ng-click='edit(review.id)'>Edit</button>
-        <button ng-click='delete(review.id)'>Delete</button>
+        <button ng-click='delete(review.id, product.id)'>Delete</button>
 		</div>
 		<ui-view></ui-view>
 	</div>

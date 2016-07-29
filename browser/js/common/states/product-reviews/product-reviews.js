@@ -30,7 +30,7 @@ app.config(function ($stateProvider) {
     controller: function ($scope, ReviewFactory, productId, $stateParams) {
       ReviewFactory.fetchOne($stateParams.reviewId)
       .then(function(review){
-        $scope.newReview = review;
+        $scope.review = review;
       })
       .catch(console.error())
     }
