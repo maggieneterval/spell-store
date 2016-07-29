@@ -17,3 +17,11 @@ module.exports = db.define('order_detail', {
 		type: Sequelize.INTEGER
 	}
 });
+
+
+defaultScope: {
+   include: [{
+       model: db.model('order'),
+       model: db.model('product')
+   }]
+}
