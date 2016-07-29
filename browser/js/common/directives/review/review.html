@@ -1,16 +1,44 @@
-<div class="row">
-        <div class="col-lg-4">
-        	<p>{{review.user.username}}</p>
+<!-- <div class="col-lg-12">
+        <div class="row">
+                <div class="col-lg-4" >
+                	<p>{{review.user.username}}</p>
+                </div>
+                <div class="col-lg-4" >
+                        <p>{{review.rating}}</p>
+                        <p><magic-rating></magic-rating></p>
+                </div>
+                <div class="col-lg-4">
+                	<p>{{review.date}}</p>
+                </div>
         </div>
-        <div class="col-lg-4">
-                <p>{{review.rating}}</p>
-        </div>
-        <div class="col-lg-4">
-        	<p>{{review.date}}</p>
+        <div class="row">
+                <div class="col-lg-12">
+                        <p>{{review.content}}</p>
+                </div>
         </div>
 </div>
-<div class="row">
-        <div class="col-lg-12">
-                <p>{{review.content}}</p>
-        </div>
+ -->
+<div class="col-lg-12">
+        <div class="row panel panel-primary">
+                <div class="panel-heading">
+                        <div class="col-lg-4 panel-title" >
+                                {{review.user.username}}
+                        </div>
+                        <div class="col-lg-4 panel-title" >
+                                {{review.rating}}
+                                <magic-rating></magic-rating>
+                        </div>
+                        <div class="col-lg-4 panel-title">
+                                {{review.date}}
+                        </div>
+                </div>
+                <div class="panel-body">
+                        <div class="row">
+                                <div class="col-lg-12">
+                                        {{review.content}}
+                                </div>
+                        </div>
+                </div>
+          </div>
 </div>
+
