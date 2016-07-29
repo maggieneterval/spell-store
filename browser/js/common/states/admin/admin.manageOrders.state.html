@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="form-group">
+            <form name="editOrderForm" ng-submit="submitEditOrderForm()">
+                <label for="orderToEdit">Select an order to edit:</label>
+                    <select required class="form-control" id="orderToEdit" ng-model="selectedOrder" ng-options="order as order.id for order in orders">
+                    </select>
+                <label for="orderStatus">Status: </label>
+                    <input required class="form-control" id="orderStatus" ng-model="selectedOrder.status" />
+                <label for="orderType">Type: </label>
+                    <input required class="form-control" id="orderType" ng-model="selectedOrder.order_type" />
+                <label for="orderBilling">Billing Address: </label>
+                    <input required class="form-control" id="orderBilling" ng-model="selectedOrder.billing_address" />
+                <label for="orderShipping">Shipping Address: </label>
+                    <input required class="form-control" id="orderShipping" ng-model="selectedOrder.shipping_address" />
+                <label for="orderShippingStatus">Shipping Status: </label>
+                    <input required class="form-control" id="orderShippingStatus" ng-model="selectedOrder.shipping_status" />
+                <label for="orderUserId">User ID: </label>
+                    <input required class="form-control" id="orderUserId" ng-model="selectedOrder.userId" />
+                <button type="submit" class="btn btn-primary" ng-disabled="!editOrderForm.$valid">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+

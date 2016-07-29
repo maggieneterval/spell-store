@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="form-group">
+            <form name="productForm" ng-submit="submitProductForm()">
+                <label for="productToEdit">Select a product to edit:</label>
+                    <select required class="form-control" id="productToEdit" ng-model="selectedProduct" ng-options="product as product.title for product in products">
+                    </select>
+                <label for="productTitle">Title: </label>
+                    <input required class="form-control" id="productTitle" ng-model="selectedProduct.title" />
+                <label for="productCategory">Category: </label>
+                    <input required class="form-control" id="productCategory" ng-model="selectedProduct.category" />
+                <label for="productDescription">Description: </label>
+                    <input required class="form-control" id="productDescription" ng-model="selectedProduct.description" />
+                <label for="productInventory">Inventory: </label>
+                    <input required class="form-control" id="productInventory" ng-model="selectedProduct.inventory" />
+                <label for="productDeliverable">Deliverable: </label>
+                    <input required class="form-control" id="productDeliverable" ng-model="selectedProduct.deliverable" />
+                <button type="submit" class="btn btn-primary" ng-disabled="!productForm.$valid">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

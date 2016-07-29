@@ -45,6 +45,17 @@ body {
   }
 }
 
+.admin-navbar {
+  ul {
+    padding-left: 60px;
+    padding-right: 30px;
+  }
+  a {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
 @import 'directives/main';
 @import 'home/main';
 @import 'about/main';

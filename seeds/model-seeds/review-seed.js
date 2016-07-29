@@ -17,7 +17,7 @@ var seedReviews = function () {
             productId: 1
         },
         {
-            content: 'One of my faovrite transfigurations of all time. Works like a charm.',
+            content: 'One of my favorite transfigurations of all time. Works like a charm.',
             rating: 4,
             userId: 1,
             productId: 2
