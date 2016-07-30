@@ -26,6 +26,25 @@ app.config(function ($stateProvider) {
                     alert("Successfully deleted order.")
                 })
             }
+            $scope.selectOrder = function (order){
+                $scope.selectedOrder = order;
+            }
         }
     })
+})
+
+app.filter('orderStatusFilter', function () {
+    return function(orders, orderStatus){
+        if (orderStatus) orderStatus = orderStatus.toLowerCase();
+        if (!orderStatus || orderStatus === 'all'){
+            return orders;
+        }
+        var result = [];
+        angular.forEach(orders, function (order) {
+            if (order.shipping_status === orderStatus){
+                result.push(order);
+            }
+        });
+        return result;
+    }
 })

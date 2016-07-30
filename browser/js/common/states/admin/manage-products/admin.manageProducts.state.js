@@ -10,6 +10,7 @@ app.config(function ($stateProvider) {
         controller: function ($scope, products, ProductsFactory) {
             $scope.products = products;
             $scope.selectedProduct;
+            $scope.newProduct;
             $scope.submitProductForm = function () {
                 return ProductsFactory.updateProduct($scope.selectedProduct.id, $scope.selectedProduct)
                 .then(function () {
@@ -24,6 +25,13 @@ app.config(function ($stateProvider) {
                 .then(function () {
                     $scope.selectedProduct = null;
                     alert('Successfully deleted product.');
+                })
+            }
+            $scope.submitNewProduct = function () {
+                return ProductsFactory.createProduct($scope.newProduct)
+                .then(function () {
+                    $scope.newProduct = null;
+                    alert('Successfully created new product!')
                 })
             }
         }
