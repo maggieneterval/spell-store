@@ -1,23 +1,4 @@
-<!-- <div class="col-lg-12">
-        <div class="row">
-                <div class="col-lg-4" >
-                	<p>{{review.user.username}}</p>
-                </div>
-                <div class="col-lg-4" >
-                        <p>{{review.rating}}</p>
-                        <p><magic-rating></magic-rating></p>
-                </div>
-                <div class="col-lg-4">
-                	<p>{{review.date}}</p>
-                </div>
-        </div>
-        <div class="row">
-                <div class="col-lg-12">
-                        <p>{{review.content}}</p>
-                </div>
-        </div>
-</div>
- -->
+
 <div class="col-lg-12">
         <div class="row panel panel-primary">
                 <div class="panel-heading">
@@ -25,11 +6,12 @@
                                 {{review.user.username}}
                         </div>
                         <div class="col-lg-4 panel-title" >
-                                {{review.rating}}
-                                <magic-rating></magic-rating>
+                                Rating: 
+                                <magic-rating rate='{{review.rating}}'></magic-rating>
                         </div>
                         <div class="col-lg-4 panel-title">
-                                {{review.date}}
+                                Date: 
+                                <span ng-bind="review.date | date:'MM/dd/yyyy'"></span> <!-- {{review.date}} -->
                         </div>
                 </div>
                 <div class="panel-body">

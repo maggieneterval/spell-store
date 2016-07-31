@@ -22,14 +22,16 @@
 		                <input class= "form-control" type="text" name="content" ng-model="review.content" ng-minlength="4" required/>
 		        </div>
 		        <magic-rating></magic-rating>
-
+				<pre><code>
+			      {{ reviewForm.rating }}
+			    </code></pre>
 		        <button>Submit</button>
 
 		</form>
 		</div>
 		<br/>
 		<div class="col-lg-12" ng-repeat = "review in reviews">
-	        <review-item review='review' isEditing=''>
+	        <review-item review='review' isReadonly={{true}}>
 	        </review-item>
 	        <button ng-click='edit(review.id)'>Edit</button>
         <button ng-click='delete(review.id, product.id)'>Delete</button>
