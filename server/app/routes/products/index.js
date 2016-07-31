@@ -40,33 +40,46 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-    Product.create(req.body)
-    .then(function (product) {
-        res.status(201).send(product)
-    })
-    .catch(next);
+    if (!req.user.isAdmin){
+        res.status(403).send('Access denied.')
+    } else {
+        Product.create(req.body)
+        .then(function (product) {
+            res.status(201).send(product)
+        })
+        .catch(next);
+    }
 });
 
 router.put('/:id', function (req, res, next) {
-    Product.findById(req.params.id)
-    .then(function (product) {
-        product.update(req.body);
-        return product.save();
-    })
-    .then(function (product) {
-        res.status(200).send(product);
-    })
-    .catch(next);
+    if (!req.user.isAdmin){
+        res.status(403).send('Access denied.')
+    } else {
+        Product.findById(req.params.id)
+        .then(function (product) {
+            product.update(req.body);
+            return product.save();
+        })
+        .then(function (product) {
+            res.status(200).send(product);
+        })
+        .catch(next);
+    }
 })
 
 router.delete('/:id', function (req, res, next) {
-    Product.destroy({
-        where: {
-            id: req.params.id
-        }
-    })
-    .then(function() {
-        res.status(204).send('Product deleted.');
-    })
-    .catch(next);
+    if (!req.user.isAdmin){
+        res.status(403).send('Access denied.')
+    } else {
+        Product.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(function() {
+            res.status(204).send('Product deleted.');
+        })
+        .catch(next);
+    }
+
 })

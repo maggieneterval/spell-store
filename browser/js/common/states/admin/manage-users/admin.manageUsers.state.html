@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <h2>Edit Users</h2>
+        <div class="form-group">
+            <form name="userForm" ng-submit="submitUserForm()">
+                <label for="userToEdit">Select a user to edit:</label>
+                    <select required class="form-control" id="userToEdit" ng-model="selectedUser" ng-options="user as user.username for user in users">
+                    </select>
+                <label for="userUserName">Username: </label>
+                    <input required class="form-control" id="userUserName" ng-model="selectedUser.username" />
+                <label for="userPassword">Password: </label>
+                    <input required class="form-control" id="userPassword" ng-model="selectedUser.password" />
+                <label for="userIsAdmin">Admin: </label>
+                    <input required class="form-control" id="userIsAdmin" ng-model="selectedUser.isAdmin" />
+                <button type="submit" class="btn btn-primary" ng-disabled="!userForm.$valid">Update user</button>
+            </form>
+             <button class="btn btn-danger" ng-click="deleteUser()">Delete user</button>
+        </div>
+    </div>
+</div>
+

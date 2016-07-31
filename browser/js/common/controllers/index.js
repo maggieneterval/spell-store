@@ -1,8 +1,18 @@
-app.controller('MainCtrl', function ($scope, $state) {
+app.controller('MainCtrl', function ($scope, $state, AuthService, AUTH_EVENTS) {
     $scope.searchString;
     $scope.changeState = function () {
       $state.go('allProducts');
     }
+    $scope.currentUser = null;
+    $scope.getCurrentUser = function () {
+        return AuthService.getLoggedInUser()
+        .then(function (user) {
+            $scope.currentUser = user;
+        });
+    }
+    $scope.$on(AUTH_EVENTS.loginSuccess, function (event, args) {
+        $scope.getCurrentUser();
+    })
 });
 
 app.filter('searchFor', function () {
