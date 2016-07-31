@@ -1,6 +1,7 @@
 var Sequelize = require('sequelize');
 
 var db = require('../_db');
+var User = require('../models/user');
 
 module.exports = db.define('review', {
   date: {
@@ -15,5 +16,10 @@ module.exports = db.define('review', {
   rating: {
     type: Sequelize.INTEGER,
     allowNull: false
+  }
+}, 
+{
+  defaultScope: {
+    include: [User]
   }
 })
