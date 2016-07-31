@@ -1,5 +1,8 @@
 app.controller('ReviewCtrl', function($scope, ReviewFactory, $state){
+
       $scope.submit = function(reviewId, productId){
+                  $scope.newReview.reviewId = reviewId;
+                  $scope.newReview.productId = productId;
 	      	ReviewFactory.add($scope.newReview)
 	      	.then(function(createdReview){
 	      		$scope.reviews.push(createdReview);
