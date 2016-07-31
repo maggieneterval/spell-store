@@ -1,19 +1,19 @@
 <div class="container" ng-controller="CartCtrl">
     <div class="row">
-        <div class="col-lg-3 spell-category-img">
+        <div class="col-md-3 spell-category-img">
             <img src="{{product.photo}}"></img>
         </div>
-        <div class="col-lg-9">
+        <div class="col-md-9">
             <h2>{{product.title}}</h2>
             <p>{{product.category}}</p>
             <p>{{product.description}}</p>
             <p>Price: {{product.price}} Knuts</p>
-            <form>
+            <form ng-submit="addToCart()">
                 <label for="productQty">Qty:</label>
                 <select name="productQty" ng-model="productQty">
                     <option ng-repeat="n in [1, 2, 3, 4, 5]">{{n}}</option>
                 </select>
-                <button ng-click="addToCart()">Add to your cauldron</button>
+                <button type="submit">Add to Cauldron</button>
             </form>
         </div>
     </div>

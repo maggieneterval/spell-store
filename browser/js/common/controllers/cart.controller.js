@@ -1,7 +1,10 @@
-app.controller('CartCtrl', function($scope) {
+app.controller('CartCtrl', function($scope, OrderFactory) {
 	$scope.addToCart = function () {
-		$scope.cart = $scope.cart || [];
-		$scope.cart.push({quantity: $scope.productQty});
-		console.log($scope.cart);
+
+		var item = {
+            product: $scope.product.id,
+            quantity: $scope.productQty
+        };
+
 	}
 });
