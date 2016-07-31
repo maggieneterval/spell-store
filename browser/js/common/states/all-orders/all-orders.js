@@ -1,14 +1,13 @@
 app.config(function($stateProvider){
 	$stateProvider
-	.state('allOrders',{
+	.state('orders',{
 		url: '/orders',
 		templateUrl: '/js/common/states/all-orders/all-orders.html',
 		controller: function($scope, $stateParams, OrderFactory){
 
-			OrderFactory.fetchById($stateParams.id)
-			.then(function(product){
-				$scope.product = product;
-				$scope.reviews = product.reviews
+			OrderFactory.fetchAll({status: 'complete'})
+			.then(function(orders){
+				$scope.orders = orders;
 			})
 			.catch(console.error())	
 		}

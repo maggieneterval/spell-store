@@ -9,6 +9,12 @@ var seedOrderDetails = function () {
     		quantity: 1,
     		price: 500
     	},
+        {
+            orderId: 1,
+            productId: 4,
+            quantity: 10,
+            price: 1000
+        },
 
     	{
     		orderId: 2,
@@ -72,6 +78,7 @@ var seedOrderDetails = function () {
     		quantity: 1,
     		price: 1000
     	}
+
        
     ];
    

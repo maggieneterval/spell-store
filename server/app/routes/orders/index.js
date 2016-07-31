@@ -1,14 +1,12 @@
 'use strict';
 var router = require('express').Router();
 var db = require('../../../db');
-var Product = db.model('order');
-var Review = db.model('review');
 var Order = db.model('order');
 module.exports = router;
 
 
 router.get('/', function(req,res,next){
-	Order.findAll({where: req.query, include: [Review, Product]})
+	Order.findAll({where: req.query})
 	.then(orders => res.json(orders))
 	.catch(next);
 })
@@ -28,7 +26,7 @@ router.param('id', function (req, res, next, id) {
 });
 
 router.post('/', function(req,res,next){
-	order.create(req.body)
+	Order.create(req.body)
 	.then(createdOrder => res.json(createdOrder))
 	.catch(next);
 })
@@ -39,12 +37,12 @@ router.get('/:id', function(req,res,next){
 
 router.put('/:id', function(req,res,next){
 	req.order.update(req.body)
-	.then(updatedorder => res.json(updatedOrder))
+	.then(updatedOrder => res.json(updatedOrder))
 	.catch(next);
 })
 
 router.delete('/:id', function(req,res,next){
 	req.order.destroy()
-	.then(destroyedOrder => res.status(204).send('Product deleted.'))
+	.then(destroyedOrder => res.status(204).send('Order deleted.'))
 	.catch(next);
 })

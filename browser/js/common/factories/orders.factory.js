@@ -20,7 +20,7 @@ app.factory('OrderFactory',function($http){
 			.catch(console.error());
 		},
 		add: function(order){
-			return $http.post('/api/orders/', order)
+			return $http.post('/api/orders', order)
 			.then(getData)
 			.catch(console.error());
 		},
