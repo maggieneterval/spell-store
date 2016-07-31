@@ -1,29 +1,72 @@
-/*'use strict';
-var router = require('express').Router();
-var db = require('../../../db');
-var Order = db.model('order');
-module.exports = router;*/
-
 'use strict';
 var router = require('express').Router();
 var db = require('../../../db');
 var Order = db.model('order');
 var OrderDetails = db.model('order_detail');
+var Product = db.model('product');
 module.exports = router;
 
+router.put('/cart', function (req, res, next) {
 
-/*
-This is how Laura advised me to set it up. It attaches the order detail to an order. Try uncommenting this and commenting the get request directly below this comment block to see the difference. I don't think I understand how to work with associations of populated scope well enough to know which approach is better.
-*/
+	var productId = req.body.id;
+	var productQty = Number(req.body.qty);
+	var productPrice;
 
-/*
-router.get('/', function(req, res, next){
-	Order.scope('populated').findAll({where: req.query})
-	.then(orders => res.json(orders))
-	.catch(next);
-});
-*/
+	Product.findById(productId)
+	.then(function (product) {
+		productPrice = product.price;
+	});
 
+	function updateOrder (order) {
+		OrderDetails.findOrCreate({
+			where: {
+				orderId: order.id,
+				productId: productId
+			}
+		})
+		.spread(function (orderDetail, created) {
+			if (created){
+				orderDetail.quantity = productQty;
+			} else {
+				orderDetail.quantity = orderDetail.quantity + productQty;
+			}
+			orderDetail.price = productPrice * orderDetail.quantity;
+			orderDetail.save()
+			.then(function (savedDetail) {
+				res.send(savedDetail);
+			})
+		})
+	}
+
+	if (req.user){
+		Order.findOrCreate({
+			where: {
+				userId: req.user.id,
+				status: 'pending'
+			}
+		})
+		.spread(function (order) {
+			return updateOrder(order);
+		})
+	} else {
+		if (!req.session.cart){
+			Order.create({
+				where: {
+					status: 'pending'
+				}
+			})
+			.then(function (order) {
+				req.session.cart = order;
+				return updateOrder(order);
+			})
+		} else {
+			Order.findById(req.session.cart.id)
+			.then(function (order) {
+				return updateOrder(order);
+			})
+		}
+	}
+})
 
 router.get('/', function(req,res,next){
 	Order.findAll({where: req.query})
@@ -77,4 +120,17 @@ router.get('/products/:id', function (req, res, next) {
 		res.send(details);
 	})
 	.catch(next);
+
 })
+
+/*
+This is how Laura advised me to set it up. It attaches the order detail to an order. Try uncommenting this and commenting the get request directly below this comment block to see the difference. I don't think I understand how to work with associations of populated scope well enough to know which approach is better.
+*/
+
+/*
+router.get('/', function(req, res, next){
+	Order.scope('populated').findAll({where: req.query})
+	.then(orders => res.json(orders))
+	.catch(next);
+});
+*/
