@@ -28,6 +28,11 @@ app.factory('OrderFactory',function($http){
 			return $http.put('/api/orders/'+id, order)
 			.then(getData)
 			.catch(console.error());
+		},
+		getOrderProducts: function (id){
+			return $http.get('/api/orders/products/' + id)
+			.then(getData)
+			.catch(console.error());
 		}
 	}
 })

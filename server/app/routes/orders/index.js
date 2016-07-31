@@ -2,6 +2,7 @@
 var router = require('express').Router();
 var db = require('../../../db');
 var Order = db.model('order');
+var OrderDetails = db.model('order_detail');
 module.exports = router;
 
 
@@ -44,5 +45,17 @@ router.put('/:id', function(req,res,next){
 router.delete('/:id', function(req,res,next){
 	req.order.destroy()
 	.then(destroyedOrder => res.status(204).send('Order deleted.'))
+	.catch(next);
+})
+
+router.get('/products/:id', function (req, res, next) {
+	OrderDetails.findAll({
+		where: {
+			orderId: req.params.id
+		}
+	})
+	.then(function (details) {
+		res.send(details);
+	})
 	.catch(next);
 })
