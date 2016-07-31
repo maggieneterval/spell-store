@@ -16,5 +16,4 @@ Review.belongsTo(Product);
 Product.hasMany(Review);
 Product.belongsToMany(Order, {through: OrderDetail});
 Order.belongsToMany(Product, {through: OrderDetail});
-//approach would be to create a join table
 

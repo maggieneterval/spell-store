@@ -19,4 +19,12 @@ module.exports = db.define('order', {
     shipping_status: {
     	type: Sequelize.ENUM, values: ['pending', 'shipped']
     }
+},{
+    scopes: {
+        populated: () => ({ // function form lets us use to-be-defined models
+          include: [{
+            model: db.model('product')
+          }]
+        })
+    }
 });

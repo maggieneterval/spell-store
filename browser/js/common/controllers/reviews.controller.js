@@ -8,16 +8,16 @@ app.controller('ReviewCtrl', function($scope, ReviewFactory, $state){
 	      		$scope.reviews.push(createdReview);
 	      	})
 
-	      	//Testing create
-	      	// $scope.newReview = [];
-	      	// var newReview = {
-	      	// 	rating: 1,
-	      	// 	content: "Not the best one i have had"
-	      	// }
-	      	// ReviewFactory.add(newReview)
-	      	// .then(function(createdReview){
-	      	// 	$scope.reviews.push(createdReview);
-	      	// })
+      	//Testing create
+      	// $scope.newReview = [];
+      	// var newReview = {
+      	// 	rating: 1,
+      	// 	content: "Not the best one i have had"
+      	// }
+      	// ReviewFactory.add(newReview)
+      	// .then(function(createdReview){
+      	// 	$scope.reviews.push(createdReview);
+      	// })
       };
 
       var refresh = function(productId){

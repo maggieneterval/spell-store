@@ -13,7 +13,7 @@ app.config(function($stateProvider){
 				$scope.product = product;
 				$scope.reviews = product.reviews
 			})
-			.catch(console.error())	
+			.catch(console.error());	
 		}
 	});
 })
