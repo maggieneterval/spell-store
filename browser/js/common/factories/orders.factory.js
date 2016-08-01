@@ -3,6 +3,10 @@ app.factory('OrderFactory',function($http){
 		return response.data;
 	};
 	return {
+
+		// error handling should be done in the controller
+		// You should just be returning the promises for the data, and then deal with the errors later
+
 		fetchAll: function(filter){
 			var condition = filter || {};
 			return $http.get('/api/orders', {params: condition})

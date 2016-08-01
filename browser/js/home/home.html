@@ -5,6 +5,9 @@
         <a ui-sref="allProducts"><h2>Shop Our Spells</h2></a>
         <p>We will e-mail you the incantations to perform the spells that you purchase.</p>
 
+        <!-- you should not be hardcoding the categories into the homepage. 
+        You should be getting the categories from the db and ng-repeating on this page. -->
+
         <div class="row">
             <div class="col-sm-3 spell-category-img">
                 <a ui-sref="singleCategory({category: 'Charm'})"><img src="/images/hogwarts.jpg"></img></a>

@@ -34,6 +34,7 @@ router.post('/', function (req, res, next) {
 });
 
 router.put('/:id', function (req, res, next) {
+    // include check for isAdmin or self
     User.findById(req.params.id)
     .then(function (user) {
         user.update(req.body);
@@ -46,6 +47,7 @@ router.put('/:id', function (req, res, next) {
 })
 
 router.delete('/:id', function (req, res, next) {
+    // include check for isAdmin or self
     User.destroy({
         where: {
             id: req.params.id
