@@ -7,12 +7,23 @@ app.config(function ($stateProvider) {
         return $stateParams.id;
       } 
     },
-    controller: function ($scope, ReviewFactory, productId, $stateParams) {
+    controller: function ($scope, ReviewFactory, productId, $stateParams, $state) {
       ReviewFactory.fetchOne($stateParams.reviewId)
       .then(function(review){
         $scope.review = review;
       })
       .catch(console.error())
+
+      $scope.cancel = function(){
+      	$state.go('productDetails', {id: productId})
+      };
+      
+      $scope.submit = function(){
+      	ReviewFactory.update($scope.review.id, $scope.review)
+      	.then(function(){
+      		$state.go('productDetails', {id: productId}, {reload: true});
+      	})
+      }
     }
   })
 })

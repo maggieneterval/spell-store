@@ -1,5 +1,4 @@
 app.controller('ReviewCtrl', function($scope, ReviewFactory, $state, AuthService){
-
       $scope.currentUser;
       AuthService.getLoggedInUser()
       .then(function(user){
@@ -11,12 +10,19 @@ app.controller('ReviewCtrl', function($scope, ReviewFactory, $state, AuthService
       })
 
       $scope.submit = function(reviewId, productId){
-                  $scope.newReview.userId = $scope.currentUser.id;
-                  $scope.newReview.productId = productId;
-	      	ReviewFactory.add($scope.newReview)
-	      	.then(function(createdReview){
-	      		$scope.reviews.push(createdReview);
-                  })
+                  if(!$scope.currentUser){
+                        $state.go('productDetails', {id: productId}, {reload: true});
+                  }
+                  else{
+                        $scope.newReview.userId = $scope.currentUser.id;
+                        $scope.newReview.productId = productId;
+      	      	ReviewFactory.add($scope.newReview)
+      	      	.then(function(createdReview){
+      	      		$scope.reviews.push(createdReview);
+                              $scope.reviewForm = {};
+
+                        })
+            }
 
       };
 

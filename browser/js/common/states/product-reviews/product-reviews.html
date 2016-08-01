@@ -3,7 +3,7 @@
 	<br/>
 	<h1> Please submit a review </h1>
 	
-	<form name="reviewForm" ng-submit="reviewForm.$valid && submit(review, product.id)" class="form-horizontal">
+	<form name="reviewForm" ng-submit="reviewForm.$valid && submit()" class="form-horizontal">
         <div class="form-group">
                 <label>User</label>
                 <input readonly class="form-control" type="text" name="username" ng-model="review.username" placeholder='{{review.user.username}}'/>
@@ -18,8 +18,8 @@
         </div>
         <magic-rating></magic-rating>
 
-        <button>Submit</button>
-
+        <button>Save Changes</button>
+        <button ng-click='cancel()'>Cancel</button>
 	</form>
 
 </div>
