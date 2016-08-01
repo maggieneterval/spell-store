@@ -7,9 +7,6 @@ module.exports = db.define('order', {
     status: {
         type: Sequelize.ENUM, values: ['pending', 'paid', 'complete']
     },
-    order_type: {
-        type: Sequelize.STRING
-    },
     billing_address: {
         type: Sequelize.STRING
     },
