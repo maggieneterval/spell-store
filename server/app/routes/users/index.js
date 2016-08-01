@@ -26,7 +26,11 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-    User.create(req.body)
+    User.create({
+        username: req.body.email,
+        email: req.body.email,
+        password: req.body.password
+    })
     .then(function (user) {
         res.status(201).send(user)
     })
