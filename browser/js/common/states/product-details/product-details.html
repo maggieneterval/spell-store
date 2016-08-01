@@ -11,27 +11,29 @@
 			<form name="reviewForm" ng-submit="reviewForm.$valid && submit(review, product.id)" class="form-horizontal">
 		        <div class="form-group">
 		                <label>User</label>
-		                <input class="form-control" type="text" name="username" ng-model="review.username"/>
+		                <input class="form-control" readonly placeholder='{{currentUser.username}}'/>
 		        </div>
 		        <div class="form-group">
 		                <label>Rating</label>
-		                <input class="form-control" type="number" max="5" min="1" name="rating" ng-model="review.rating" required/>
+		                <input class="form-control" type="number" max="5" min="1" name="rating" ng-model="newReview.rating" required/>
 		        </div>
 		        <div class="form-group">
 		                <label>Review</label>
-		                <input class= "form-control" type="text" name="content" ng-model="review.content" ng-minlength="4" required/>
+		                <input class= "form-control" type="text" name="content" ng-model="newReview.content" ng-minlength="4" required/>
 		        </div>
 		        <magic-rating></magic-rating>
-
-		        <button>Submit</button>
+				<pre><code>
+			      {{ reviewForm.rating }}
+			    </code></pre>
+		        <button ng-disabled='!currentUser'>Submit</button>
 
 		</form>
 		</div>
 		<br/>
 		<div class="col-lg-12" ng-repeat = "review in reviews">
-	        <review-item review='review' isEditing=''>
+	        <review-item review='review' isReadonly={{true}}>
 	        </review-item>
-	        <button ng-click='edit(review.id)'>Edit</button>
+	        <button ng-disabled='checkUser(review.user.id)' ng-click='edit(review.id)'>Edit</button>
         <button ng-click='delete(review.id, product.id)'>Delete</button>
 		</div>
 		<ui-view></ui-view>

@@ -1,20 +1,29 @@
-app.controller('ReviewCtrl', function($scope, ReviewFactory, $state){
-      $scope.submit = function(reviewId, productId){
-      	ReviewFactory.add($scope.newReview)
-      	.then(function(createdReview){
-      		$scope.reviews.push(createdReview);
-      	})
+app.controller('ReviewCtrl', function($scope, ReviewFactory, $state, AuthService){
+      $scope.currentUser;
+      AuthService.getLoggedInUser()
+      .then(function(user){
+            if(!user){$scope.reviewForm.username = null; }
+            else{
+                  $scope.currentUser = user;
+                  $scope.reviewForm.username = user.username;
+            }
+      })
 
-      	//Testing create
-      	// $scope.newReview = [];
-      	// var newReview = {
-      	// 	rating: 1,
-      	// 	content: "Not the best one i have had"
-      	// }
-      	// ReviewFactory.add(newReview)
-      	// .then(function(createdReview){
-      	// 	$scope.reviews.push(createdReview);
-      	// })
+      $scope.submit = function(reviewId, productId){
+                  if(!$scope.currentUser){
+                        $state.go('productDetails', {id: productId}, {reload: true});
+                  }
+                  else{
+                        $scope.newReview.userId = $scope.currentUser.id;
+                        $scope.newReview.productId = productId;
+      	      	ReviewFactory.add($scope.newReview)
+      	      	.then(function(createdReview){
+      	      		$scope.reviews.push(createdReview);
+                              $scope.reviewForm = {};
+
+                        })
+            }
+
       };
 
       var refresh = function(productId){
@@ -26,7 +35,6 @@ app.controller('ReviewCtrl', function($scope, ReviewFactory, $state){
       $scope.edit = function(reviewId){
       	$scope.isEditing = true;
       	$state.go('productDetails.review', {reviewId: reviewId})
-      	//update changes
       };
 
       $scope.delete = function(reviewId, productId){

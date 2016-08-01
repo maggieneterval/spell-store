@@ -3,16 +3,21 @@ app.directive('magicRating', function(){
 		restrict: 'EA',
 		templateUrl: '/js/common/directives/ratings/ratings.html',
 		scope: {
-			ratingValue: '='
+            rate: '@'
 		},
 		link: function(scope, element, attr) {
-        	scope.getNum = function(){
-        		return [1,2,3,4,5];
-        	}
-        	scope.clicked = function(index){
-        		scope.rating = index;
+        	// scope.rate = 1;
+              scope.max = 5;
+              scope.isReadonly = true;
+
+              scope.hoveringOver = function(value) {
+                scope.overStar = value;
+              };
+
+              scope.ratingStates = [
+                {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'}
+              ];
         	}	
-    	}
   	}
 })
 
