@@ -20,41 +20,44 @@ router.put('/checkout', function (req, res, next) {
 		})
 		.then(function (order) {
 			order.status = 'complete';
-			order.billing_address = checkoutForm.billing_address;
-			order.shipping_address = checkoutForm.shipping_address;
+			order.billing_address = checkoutForm.billingAddress;
+			order.shipping_address = checkoutForm.shippingAddress;
 			order.shipping_status = 'pending';
 			order.save()
 			.then(function (savedOrder) {
-				console.log('Completed checkout: ', savedOrder)
+				res.send('Completed checkout: ', savedOrder)
 			})
 		})
 	} else {
 		var createdUser;
 		User.create({
-			username: checkoutForm.username,
-			password: checkoutForm.password
+			username: checkoutForm.email,
+			email: checkoutForm.email,
+			password: checkoutForm.email
 		})
 		.then(function (user) {
 			createdUser = user;
-			Order.findOne({
+			Order.findOrCreate({
 				where: {
 					id: req.session.cart.id,
 					status: 'pending'
 				}
 			})
-		})
-		.then(function (order) {
-			order.status = 'complete';
-			order.billing_address = checkoutForm.billing_address;
-			order.shipping_address = checkoutForm.shipping_address;
-			order.shipping_status = 'pending';
-			order.userId = createdUser.id;
-			order.save()
-			.then(function (savedOrder) {
-				console.log('Completed checkout: ', savedOrder);
+			.spread(function (order, ifCreated) {
+				order.status = 'complete';
+				order.billing_address = checkoutForm.billingAddress;
+				order.shipping_address = checkoutForm.shippingAddress;
+				order.shipping_status = 'pending';
+				order.userId = createdUser.id;
+				order.save()
+				.then(function (savedOrder) {
+					req.session.cart = null;
+					res.send('Completed checkout: ', savedOrder);
 
+				})
 			})
 		})
+
 
 	}
 
