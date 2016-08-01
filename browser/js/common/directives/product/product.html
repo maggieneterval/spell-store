@@ -5,9 +5,19 @@
         </div>
         <div class="col-lg-9">
             <h2>{{product.title}}</h2>
-            <p>{{product.category}}</p>
+            <p>Category: {{product.category}}</p>
             <p>{{product.description}}</p>
-            <p>Price: {{product.price}} Knuts</p>
+            <p>Price: 
+            <!-- product.price is the cost in Knuts. The same value is
+            expressed below in Galleons, Sickles, and Knuts. If you need to 
+            do this elsewhere in JavaScript rather than in Angular interpolation,
+            the value of k Knuts is:
+                Math.floor(k/493) Galleons,
+                Math.floor((k % 493)/29) Sickles,
+                and (k % 493)%29 Knuts. -->
+            {{product.price/493 | number:0}} Galleon[s],
+            {{(product.price%493)/29 | number:0}} Sickle[s], and
+            {{((product.price) % 493) % 29}} Knut[s]</p>
             <button>Add to your cauldron</button>
         </div>
     </div>
