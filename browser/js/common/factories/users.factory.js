@@ -1,5 +1,8 @@
 app.factory('UsersFactory', function ($http) {
 
+    // some of your factories directly return an unnamed object, while others (like this one) return a variable named factory
+    // which is fine, just standardize for cleaner code.
+
     var factory = {};
 
     factory.fetchAll = function () {

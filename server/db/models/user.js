@@ -20,7 +20,8 @@ module.exports = db.define('user', {
         allowNull: false
     },
     password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false // password should also be required
     },
     salt: {
         type: Sequelize.STRING
@@ -61,6 +62,7 @@ module.exports = db.define('user', {
             hash.update(salt);
             return hash.digest('hex');
         }
+        // nice. I LOVE encryption.
     },
     hooks: {
         beforeValidate: function (user) {

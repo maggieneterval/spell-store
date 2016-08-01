@@ -2,6 +2,9 @@ app.factory('ReviewFactory',function($http){
 	var getData = function(response){
 		return response.data;
 	};
+
+	// again, don't error handle here
+
 	return {
 		fetchAll: function(filter){
 			var condition = filter || {};

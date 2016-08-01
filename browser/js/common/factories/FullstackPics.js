@@ -28,3 +28,5 @@ app.factory('FullstackPics', function () {
         'https://pbs.twimg.com/media/CIS4JPIWIAI37qu.jpg:large'
     ];
 });
+
+// you can go ahead and delete all the useless FSG fluff

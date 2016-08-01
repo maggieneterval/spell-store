@@ -11,5 +11,7 @@ app.config(function($stateProvider){
 			})
 			.catch(console.error())	
 		}
+		// this state is visible to everyone, including non-logged-in users (not good)
+		// could include validation in backend and frontend
 	});
 })

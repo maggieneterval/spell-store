@@ -34,12 +34,14 @@ router.get('/:id', function(req,res,next){
 })
 
 router.put('/:id', function(req,res,next){
+	// include check for isAdmin or self
 	req.review.update(req.body)
 	.then(updatedReview => res.json(updatedReview))
 	.catch(next);
 })
 
 router.delete('/:id', function(req,res,next){
+	// include check for isAdmin or self
 	req.review.destroy()
 	.then(destroyedReview => res.json(destroyedReview))
 	.catch(next);
