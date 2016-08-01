@@ -1,17 +1,26 @@
-app.controller('MainCtrl', function ($scope, $state, AuthService, AUTH_EVENTS) {
+app.controller('MainCtrl', function ($scope, $rootScope, $state, AuthService, AUTH_EVENTS) {
     $scope.searchString;
     $scope.changeState = function () {
       $state.go('allProducts');
     }
-    $scope.currentUser = null;
+    $rootScope.currentUser = null;
     $scope.getCurrentUser = function () {
         return AuthService.getLoggedInUser()
         .then(function (user) {
-            $scope.currentUser = user;
+            $rootScope.currentUser = user;
         });
+    }
+    $scope.logout = function () {
+        AuthService.logout()
+        .then(function () {
+            $state.go('login');
+        })
     }
     $scope.$on(AUTH_EVENTS.loginSuccess, function (event, args) {
         $scope.getCurrentUser();
+    })
+    $scope.$on(AUTH_EVENTS.logoutSuccess, function (event, args) {
+        $rootScope.currentUser = null;
     })
 });
 
