@@ -4,7 +4,61 @@ var db = require('../../../db');
 var Order = db.model('order');
 var OrderDetails = db.model('order_detail');
 var Product = db.model('product');
+var User = db.model('user');
 module.exports = router;
+
+router.put('/checkout', function (req, res, next) {
+
+	var checkoutForm = req.body;
+
+	if (req.user){
+		Order.findOne({
+			where: {
+				userId: req.user.id,
+				status: 'pending'
+			}
+		})
+		.then(function (order) {
+			order.status = 'complete';
+			order.billing_address = checkoutForm.billing_address;
+			order.shipping_address = checkoutForm.shipping_address;
+			order.shipping_status = 'pending';
+			order.save()
+			.then(function (savedOrder) {
+				console.log('Completed checkout: ', savedOrder)
+			})
+		})
+	} else {
+		var createdUser;
+		User.create({
+			username: checkoutForm.username,
+			password: checkoutForm.password
+		})
+		.then(function (user) {
+			createdUser = user;
+			Order.findOne({
+				where: {
+					id: req.session.cart.id,
+					status: 'pending'
+				}
+			})
+		})
+		.then(function (order) {
+			order.status = 'complete';
+			order.billing_address = checkoutForm.billing_address;
+			order.shipping_address = checkoutForm.shipping_address;
+			order.shipping_status = 'pending';
+			order.userId = createdUser.id;
+			order.save()
+			.then(function (savedOrder) {
+				console.log('Completed checkout: ', savedOrder);
+
+			})
+		})
+
+	}
+
+})
 
 router.put('/cart', function (req, res, next) {
 
@@ -60,7 +114,8 @@ router.put('/cart', function (req, res, next) {
 		} else {
 			Order.findOrCreate({
 				where: {
-					id: req.session.cart.id
+					id: req.session.cart.id,
+					status: 'pending'
 				}
 			})
 			.spread(function (order, wasCreated) {

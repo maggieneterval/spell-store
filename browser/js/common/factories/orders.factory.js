@@ -38,6 +38,11 @@ app.factory('OrderFactory',function($http){
 			return $http.put('/api/orders/cart', item)
 			.then(getData)
 			.catch(console.error());
+		},
+		checkoutCart: function (checkoutForm) {
+			return $http.put('/api/orders/checkout', checkoutForm)
+			.then(getData)
+			.catch(console.error());
 		}
 	}
 })
