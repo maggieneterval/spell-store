@@ -186,7 +186,7 @@ router.delete('/:id', function(req, res, next){
 	        .then(destroyedOrder => res.status(204).send('Order deleted.'))
 		.catch(next);
     } else {
-		res.status(204).send('Order deleted.'))
+		res.status(403).send('Access denied.')
 	}
 })
 
