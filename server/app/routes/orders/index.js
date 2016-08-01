@@ -51,9 +51,7 @@ router.put('/cart', function (req, res, next) {
 	} else {
 		if (!req.session.cart){
 			Order.create({
-				where: {
-					status: 'pending'
-				}
+				status: 'pending'
 			})
 			.then(function (order) {
 				req.session.cart = order;
