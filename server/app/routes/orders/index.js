@@ -129,9 +129,13 @@ router.put('/cart', function (req, res, next) {
 })
 
 router.get('/', function(req,res,next){
-	Order.findAll({where: req.query})
-	.then(orders => res.json(orders))
-	.catch(next);
+    if (!req.user || !req.user.isAdmin){
+        res.status(403).send('Access denied.')
+    } else {
+		Order.findAll({where: req.query})
+		.then(orders => res.json(orders))
+		.catch(next);
+	}
 });
 
 router.param('id', function (req, res, next, id) {
@@ -149,38 +153,57 @@ router.param('id', function (req, res, next, id) {
 });
 
 router.post('/', function(req, res, next){
-	Order.create(req.body)
-	.then(createdOrder => res.json(createdOrder))
-	.catch(next);
+    if (!req.user || !req.user.isAdmin){
+        res.status(403).send('Access denied.')
+    } else {
+		Order.create(req.body)
+		.then(createdOrder => res.json(createdOrder))
+		.catch(next);
+	}
 });
 
 router.get('/:id', function(req, res, next){
-	res.json(req.order);
+    if (!req.user || !req.user.isAdmin){
+        res.status(403).send('Access denied.')
+    } else {
+		res.json(req.order);
+	}
 })
 
 router.put('/:id', function(req, res, next){
-	req.order.update(req.body)
-	.then(updatedOrder => res.json(updatedOrder))
-	.catch(next);
+    if (!req.user || !req.user.isAdmin){
+        res.status(403).send('Access denied.')
+    } else {
+		req.order.update(req.body)
+		.then(updatedOrder => res.json(updatedOrder))
+		.catch(next);
+	}
 })
 
 router.delete('/:id', function(req, res, next){
-	req.order.destroy()
-	.then(destroyedOrder => res.status(204).send('Order deleted.'))
-	.catch(next);
+    if (!req.user || !req.user.isAdmin){
+        res.status(403).send('Access denied.')
+    } else {
+		req.order.destroy()
+		.then(destroyedOrder => res.status(204).send('Order deleted.'))
+		.catch(next);
+	}
 })
 
 router.get('/products/:id', function (req, res, next) {
-	OrderDetails.findAll({
-		where: {
-			orderId: req.params.id
-		}
-	})
-	.then(function (details) {
-		res.send(details);
-	})
-	.catch(next);
-
+    if (!req.user || !req.user.isAdmin){
+        res.status(403).send('Access denied.')
+    } else {
+		OrderDetails.findAll({
+			where: {
+				orderId: req.params.id
+			}
+		})
+		.then(function (details) {
+			res.send(details);
+		})
+		.catch(next);
+	}
 })
 
 /*
