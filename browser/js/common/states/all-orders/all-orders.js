@@ -3,9 +3,9 @@ app.config(function($stateProvider){
 	.state('orders',{
 		url: '/orders',
 		templateUrl: '/js/common/states/all-orders/all-orders.html',
-		controller: function($scope, $stateParams, OrderFactory){
-
-			OrderFactory.fetchAll({status: 'complete'})
+		controller: function($scope, $stateParams, OrderFactory, $rootScope){
+			console.log("currentUser", $rootScope.currentUser);
+			OrderFactory.fetchAll({status: 'complete', userId: $rootScope.currentUser.id})
 			.then(function(orders){
 				$scope.orders = orders;
 			})
