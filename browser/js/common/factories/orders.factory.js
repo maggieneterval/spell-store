@@ -33,6 +33,11 @@ app.factory('OrderFactory',function($http){
 			return $http.get('/api/orders/products/' + id)
 			.then(getData)
 			.catch(console.error());
+		},
+		addToCart: function (currentUser, item) {
+			return $http.put('/api/orders/cart', item)
+			.then(getData)
+			.catch(console.error());
 		}
 	}
 })

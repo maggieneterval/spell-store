@@ -26,9 +26,9 @@
                 <div class="col-md-8">
                     <ul class="nav navbar-nav navbar-right">
                         <li ng-show="!currentUser"><a ui-sref="login">Log in</a></li>
-                        <li ng-show="currentUser"><a href="#">Log out</a></li>
+                        <li ng-show="currentUser" ng-click="logout()"><a>Log out</a></li>
                         <li><a href="#">My Cauldron</a></li>
-                        <li><a href="#">My Account</a></li>
+                        <li ng-show="currentUser"><a href="#">My Account</a></li>
                         <li ng-show="currentUser.isAdmin"><a ui-sref="adminView.manageUsers">Admin</a></li>
                     </ul>
                 </div>

@@ -1,18 +1,17 @@
-app.controller('CartCtrl', function($scope, OrderFactory) {
+app.controller('CartCtrl', function($scope, $rootScope, OrderFactory) {
+
 	$scope.addToCart = function () {
 
-		var item = {
-            product: $scope.product.id,
-            quantity: $scope.productQty
-        };
+        $rootScope.currentUser;
+        $scope.currentItem = {
+            id: $scope.product.id,
+            qty: $scope.productQty
+        }
 
-        // I wanted to use this `item` in a PUT request
-        // I'm thinking the flow needs to be something like:
-        // check if the user has an order pending. create an order if not
-        // if the person is a unregistered user, do you create a user in the db based on the Sessions table data?
-        // add the item to order details table
-
-
-
+        OrderFactory.addToCart($rootScope.currentUser, $scope.currentItem)
+        .then(function () {
+            //go to 'myCauldron' state
+            console.log('Added to cart');
+        })
 	}
 });
