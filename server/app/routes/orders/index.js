@@ -58,8 +58,12 @@ router.put('/cart', function (req, res, next) {
 				return updateOrder(order);
 			})
 		} else {
-			Order.findById(req.session.cart.id)
-			.then(function (order) {
+			Order.findOrCreate({
+				where: {
+					id: req.session.cart.id
+				}
+			})
+			.spread(function (order, wasCreated) {
 				return updateOrder(order);
 			})
 		}
