@@ -5,6 +5,7 @@
     <div class="row" ng-repeat="product in allProducts | searchFor: searchString">
         <product-item product="product">
         </product-item>
+        <button ui-sref='productDetails({id:product.id})'>Details</button>
     </div>
 </div>
 </section>

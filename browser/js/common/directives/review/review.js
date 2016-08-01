@@ -1,9 +1,11 @@
-app.directive('reviewItem', function(){
+app.directive('reviewItem', function(ReviewFactory){
 	return {
 		restrict: 'E',
 		scope: {
-			review: '='
+			review: '=',
 		},
-		templateUrl: 'js/common/directives/review/review.html'
+		templateUrl: 'js/common/directives/review/review.html',
+		link: function(scope){
+		}
 	}
 })

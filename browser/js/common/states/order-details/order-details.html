@@ -1,0 +1,27 @@
+<div class="container-fluid">
+	<h1>Order Details</h1>
+	<div class="panel-group">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				Order Information
+			</div>
+			<div class="panel-body">
+				<p>Order Id: {{order.id}}</p>
+				<p>Date: {{order.createdAt}}</p>
+				<p>Billing Address: {{order.billing_address}}</p>
+				<p>Shipping Address: {{order.shipping_address}}</p>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			Ordered Products:
+		</div>
+		<div class="panel-body" ng-repeat="product in orderedProducts">
+			<p>Title: {{product.details.title}}</p>
+			<p>Price: {{product.price}}</p>
+			<p>Qty: {{product.quantity}}</p>
+			<p>Description: {{product.details.description}}</p>
+		</div>
+	</div>
+</div>
