@@ -129,7 +129,7 @@ router.put('/cart', function (req, res, next) {
 })
 
 router.get('/', function(req,res,next){
-    if (!req.user || !req.user.isAdmin){
+    if (!req.user){
         res.status(403).send('Access denied.')
     } else {
 		Order.findAll({where: req.query})
@@ -153,7 +153,7 @@ router.param('id', function (req, res, next, id) {
 });
 
 router.post('/', function(req, res, next){
-    if (!req.user || !req.user.isAdmin){
+    if (!req.user){
         res.status(403).send('Access denied.')
     } else {
 		Order.create(req.body)
@@ -163,30 +163,30 @@ router.post('/', function(req, res, next){
 });
 
 router.get('/:id', function(req, res, next){
-    if (!req.user || !req.user.isAdmin){
-        res.status(403).send('Access denied.')
+    if (req.user.id === req.order.userId || req.user.isAdmin){
+        res.json(req.order);
     } else {
-		res.json(req.order);
+	res.status(403).send('Access denied.');
 	}
 })
 
 router.put('/:id', function(req, res, next){
-    if (!req.user || !req.user.isAdmin){
-        res.status(403).send('Access denied.')
+    if (req.user.id === req.order.userId || req.user.isAdmin){
+        req.order.update(req.body)
+	.then(updatedOrder => res.json(updatedOrder))
+	.catch(next);
     } else {
-		req.order.update(req.body)
-		.then(updatedOrder => res.json(updatedOrder))
-		.catch(next);
-	}
+	res.status(403).send('Access denied.')
+    }
 })
 
 router.delete('/:id', function(req, res, next){
-    if (!req.user || !req.user.isAdmin){
-        res.status(403).send('Access denied.')
-    } else {
-		req.order.destroy()
-		.then(destroyedOrder => res.status(204).send('Order deleted.'))
+    if (req.user.id === req.order.userId || req.user.isAdmin){
+                req.order.destroy()
+	        .then(destroyedOrder => res.status(204).send('Order deleted.'))
 		.catch(next);
+    } else {
+		res.status(204).send('Order deleted.'))
 	}
 })
 
