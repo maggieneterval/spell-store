@@ -30,7 +30,7 @@ router.get('/viewcart', function (req, res, next) {
 		} else {
 			Order.scope('populated').findOrCreate({
 				where: {
-					userId: req.session.cart.id,
+					id: req.session.cart.id,
 					status: 'pending'
 				}
 			})
@@ -223,9 +223,6 @@ router.delete('/:id', function(req, res, next){
 })
 
 router.get('/products/:id', function (req, res, next) {
-    if (!req.user || !req.user.isAdmin){
-        res.status(403).send('Access denied.')
-    } else {
 		OrderDetails.findAll({
 			where: {
 				orderId: req.params.id
@@ -235,5 +232,4 @@ router.get('/products/:id', function (req, res, next) {
 			res.send(details);
 		})
 		.catch(next);
-	}
 })
