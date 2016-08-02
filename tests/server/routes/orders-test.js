@@ -12,20 +12,19 @@ describe('Order Routes', function () {
         return db.sync({force: true});
     });
 
-    beforeEach('Create app', function () {
+    beforeEach('Create app', function (done) {
         app = require('../../../server/app')(db);
         Order = db.model('order');
         User = db.model('user');
         agent = supertest.agent(app);
-        User.create({id: 004, isRegistered: true, username: "irisy", email: "iris@gmail.com", password: "forest", isAdmin: true})
-        // .then(function(created){
-        //     var sanitizedUser = created.sanitize();
-        //     return sanitizedUser;
-        // })
+        User.create({isRegistered: true, username: "irisy", email: "iris@gmail.com", password: "forest", isAdmin: true})
         .then(function(user){
             agent
             .post('/login')
-            .send(user)
+            .send({
+                email: 'iris@gmail.com',
+                password: 'forest'
+            })
             .expect(200)
             .end(function(err, res) {
                if(err) return done(err);
@@ -42,7 +41,6 @@ describe('Order Routes', function () {
 
         beforeEach(function () {
         	var promise1 = Order.create({
-                id: 001,
                 status: 'paid',
                 billing_address: '41 Rockville Drive Holland, MI 49423',
                 shipping_address: '41 Rockville Drive Holland, MI 49423',
@@ -50,7 +48,6 @@ describe('Order Routes', function () {
             });
 
             var promise2 = Order.create({
-                id: 002,
                 status: 'complete',
                 billing_address: '8146 Augusta Street Floral Park, NY 11001',
                 shipping_address: '8146 Augusta Street Floral Park, NY 11001',
@@ -58,7 +55,6 @@ describe('Order Routes', function () {
             });
 
             var promise3 = Order.create({
-                id: 003,
                 status: 'complete',
                 billing_address: '7436 Park Street Inman, SC 29349',
                 shipping_address: '7436 Park Street Inman, SC 29349',
@@ -104,7 +100,7 @@ describe('Order Routes', function () {
             .end(function (err, res) {
                 if(err) return done(err);
                 expect(res.body).to.be.instanceof(Object);
-                expect(res.body.billing_address).to.equal(orderB.billing_address);
+                expect(res.body.billing_address).to.equal('8146 Augusta Street Floral Park, NY 11001');
                 done();
             });
         });
