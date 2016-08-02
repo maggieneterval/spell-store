@@ -91,8 +91,6 @@ router.put('/checkout', function (req, res, next) {
 				})
 			})
 		})
-
-
 	}
 
 })
@@ -239,18 +237,3 @@ router.get('/products/:id', function (req, res, next) {
 		.catch(next);
 	}
 })
-/*
-router.get('/users/:id', function (req, res, next) {
-	Order.scope('populated').findOne({
-		where: {
-			userId: req.params.id,
-			status: 'pending'
-		}
-	})
-	.then(orders => res.send(orders))
-	.catch(next);
-
-})*/
-
-
-

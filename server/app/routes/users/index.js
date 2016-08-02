@@ -15,7 +15,7 @@ router.get('/:id', function (req, res, next) {
             }
         })
         .then(function (user) {
-            res.status(200).send(user);
+            res.status(200).send(user.sanitize());
         })
         .catch(next);
     }
