@@ -8,8 +8,44 @@ var User = db.model('user');
 var nodemailer = require('nodemailer');
 module.exports = router;
 
+
  // create reusable transporter object using the default SMTP transport
 var transporter = nodemailer.createTransport('smtps://spellstorellc%40gmail.com:magicalme@smtp.gmail.com');
+
+router.get('/viewcart', function (req, res, next) {
+	if (req.user){
+		Order.scope('populated').findOrCreate({
+			where: {
+				userId: req.user.id,
+				status:'pending'
+			}
+		})
+		.spread(function (order, created){
+			res.send(order);
+		})
+	} else {
+		if (!req.session.cart){
+			Order.create({
+				status: 'pending'
+			})
+			.then(function (order) {
+				req.session.cart = order;
+				res.send(order);
+			})
+		} else {
+			Order.scope('populated').findOrCreate({
+				where: {
+					id: req.session.cart.id,
+					status: 'pending'
+				}
+			})
+			.spread(function (order, wasCreated) {
+				res.send(order);
+			})
+		}
+	}
+})
+
 
 router.put('/checkout', function (req, res, next) {
 
@@ -87,8 +123,6 @@ router.put('/checkout', function (req, res, next) {
 				})
 			})
 		})
-
-
 	}
 
 })
@@ -193,10 +227,10 @@ router.post('/', function(req, res, next){
 });
 
 router.get('/:id', function(req, res, next){
-    if (req.user.id === req.order.userId || req.user.isAdmin){
-        res.json(req.order);
-    } else {
-	res.status(403).send('Access denied.');
+	if(req.user.id === req.order.userId || req.user.isAdmin){
+		res.json(req.order);
+	}else{
+		res.status(403).send('Access denied.')
 	}
 })
 
@@ -221,9 +255,6 @@ router.delete('/:id', function(req, res, next){
 })
 
 router.get('/products/:id', function (req, res, next) {
-    if (!req.user || !req.user.isAdmin){
-        res.status(403).send('Access denied.')
-    } else {
 		OrderDetails.findAll({
 			where: {
 				orderId: req.params.id
@@ -233,17 +264,4 @@ router.get('/products/:id', function (req, res, next) {
 			res.send(details);
 		})
 		.catch(next);
-	}
 })
-
-/*
-This is how Laura advised me to set it up. It attaches the order detail to an order. Try uncommenting this and commenting the get request directly below this comment block to see the difference. I don't think I understand how to work with associations of populated scope well enough to know which approach is better.
-*/
-
-/*
-router.get('/', function(req, res, next){
-	Order.scope('populated').findAll({where: req.query})
-	.then(orders => res.json(orders))
-	.catch(next);
-});
-*/

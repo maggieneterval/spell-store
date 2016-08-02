@@ -1,0 +1,50 @@
+<div class="container">
+	<h2>Cauldron</h2>
+
+	<!-- if no pending orders for user -->
+	<div class="row" ng-show="!pendingOrder">
+		<div class="col-md-12">
+			<h3>Your Cauldron is empty.</h3>
+			<p>It's time to start shopping! These spells won't incant themselves.</p>
+
+			<!-- 
+			<p>Log in to view your saved cauldron</p>
+			<button>Log in</button>
+			-->
+		</div>
+	</div>
+
+	<!-- these are used as headers since I'm choosing to not use a table -->
+	<div ng-show="pendingOrder">
+		<div class="row">
+			<div class="col-xs-3 col-xs-offset-5 col-md-3 col-md-offset-5">Qty</div>
+			<div class="col-xs-4 col-md-4">Price</div>
+		</div>
+
+		<!-- repeat for each item in the cart-->
+		<div class="row" ng-repeat="order in pendingOrder.products">
+			<div class="col-xs-2 col-md-2">
+				<img ng-src="{{order.photo}}">
+			</div>
+			<div class="col-xs-3 col-md-3"><strong>{{order.title}}</strong></div>
+			<div class="col-xs-3 col-md-3">{{order.order_detail.quantity}}</div>
+			<div class="col-xs-4 col-md-4">
+				{{order.order_detail.price/493 | number:0}} Galleon[s],
+	            {{(order.order_detail.price%493)/29 | number:0}} Sickle[s], and
+	            {{((order.order_detail.price) % 493) % 29}} Knut[s]
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4 col-md-offset-8">
+				<strong>Subtotal: </strong>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<a ui-sref="checkout"><button>Proceed to Checkout</button></a>
+			</div>
+		</div>
+	</div>
+</div>

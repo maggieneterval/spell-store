@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-
+var should = require('chai').should;
 var Sequelize = require('sequelize');
 
 var db = require('../../../server/db');
@@ -44,6 +44,24 @@ describe('User Routes', function () {
             })
         })
 
+        beforeEach(function(done) {
+            User.create({isRegistered: true, username: "irisy", email: "iris@gmail.com", password: "forest", isAdmin: true})
+            .then(function(user){
+                agent
+                .post('/login')
+                .send({
+                    email: 'iris@gmail.com',
+                    password: 'forest'
+                })
+                .expect(200)
+                .end(function(err, res) {
+                   if(err) return done(err);
+                   console.log("this is the user", res.body);
+                   done();
+                });
+            })
+        })
+
         it('GETs all users', function (done) {
             agent
             .get('/api/users')
@@ -51,7 +69,7 @@ describe('User Routes', function () {
             .end(function (err, res) {
                 if (err) return done(err);
                 expect(res.body).to.be.instanceof(Array);
-                expect(res.body).to.have.length(2);
+                expect(res.body).to.have.length(3);
                 done();
             });
         });
@@ -72,15 +90,16 @@ describe('User Routes', function () {
             .post('/api/users')
             .send({
                 username: 'newUser',
-                email: 'new@gmail.com'
+                email: 'new@gmail.com',
+                password: 'whatever'
             })
             .expect(201)
             .end(function (err, res) {
                 if (err) return done(err);
-                expect(res.body.username).to.equal('newUser');
+                expect(res.body.email).to.equal('new@gmail.com');
                 User.findOne({
                     where: {
-                        username: 'newUser'
+                        email: 'new@gmail.com'
                     }
                 })
                 .then(function (thisUser) {

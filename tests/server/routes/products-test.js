@@ -8,16 +8,33 @@ var supertest = require('supertest');
 
 describe('Product Routes', function () {
 
-    var app, Product, agent;
+    var app, Product, User, agent;
 
     beforeEach('Sync DB', function () {
         return db.sync({force: true});
     });
 
-    beforeEach('Create app', function () {
+    beforeEach('Create app', function (done) {
         app = require('../../../server/app')(db);
+        User = db.model('user');
         Product = db.model('product');
+        User = db.model('user');
         agent = supertest.agent(app);
+        User.create({isRegistered: true, username: "irisy", email: "iris@gmail.com", password: "forest", isAdmin: true})
+        .then(function(user){
+            agent
+            .post('/login')
+            .send({
+                email: 'iris@gmail.com',
+                password: 'forest'
+            })
+            .expect(200)
+            .end(function(err, res) {
+               if(err) return done(err);
+               console.log("this is the user", res.body);
+               done();
+            });
+        })
     });
 
     describe('CRUD products', function () {
@@ -26,7 +43,6 @@ describe('Product Routes', function () {
 
         beforeEach(function () {
             return Product.create({
-                id: 001,
                 title: 'productA',
                 category: 'Charm'
             })
@@ -37,7 +53,6 @@ describe('Product Routes', function () {
 
         beforeEach(function () {
             return Product.create({
-                id: 002,
                 title: 'productB',
                 category: 'Hex'
             })
@@ -48,7 +63,6 @@ describe('Product Routes', function () {
 
         beforeEach(function () {
             return Product.create({
-                id: 003,
                 title: 'productC',
                 category: 'Jinx'
             })

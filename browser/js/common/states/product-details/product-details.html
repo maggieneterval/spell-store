@@ -21,20 +21,20 @@
 		                <label>Review</label>
 		                <input class= "form-control" type="text" name="content" ng-model="newReview.content" ng-minlength="4" required/>
 		        </div>
-		        <magic-rating></magic-rating>
+		        <magic-rating value="rate" ng-model="newReview.rate"></magic-rating>
 				<pre><code>
-			      {{ reviewForm.rating }}
+			      {{ reviewForm.rate }}
 			    </code></pre>
 		        <button ng-disabled='!currentUser'>Submit</button>
 
 		</form>
 		</div>
 		<br/>
-		<div class="col-lg-12" ng-repeat = "review in reviews">
+		<div class="col-lg-12" ng-repeat="review in reviews">
 	        <review-item review='review' isReadonly={{true}}>
 	        </review-item>
-	        <button ng-disabled='checkUser(review.user.id)' ng-click='edit(review.id)'>Edit</button>
-        <button ng-click='delete(review.id, product.id)'>Delete</button>
+	        <button ng-show='authorizedUser(review.userId)' ng-click='edit(review.id)'>Edit</button>
+        <button ng-show='authorizedUser(review.userId)' ng-click='delete(review.id, product.id)'>Delete</button>
 		</div>
 		<ui-view></ui-view>
 	</div>
