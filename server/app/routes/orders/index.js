@@ -123,8 +123,8 @@ router.get('/products/:id', function (req, res, next) {
 	})
 	.catch(next);
 
-})/*
-
+})
+/*
 router.get('/users/:id', function (req, res, next) {
 	Order.scope('populated').findOne({
 		where: {
@@ -136,3 +136,39 @@ router.get('/users/:id', function (req, res, next) {
 	.catch(next);
 
 })*/
+
+
+router.get('/cart', function (req, res, next) {
+	if(req.user){
+		Order.findOne({
+			where: {
+				id: req.user.id,
+				status: 'pending'
+			}
+		})
+		.then(orders => res.send(orders))
+		.catch(next);
+	}
+
+	/*if(req.user){
+		Order.findOrCreate({
+			where: {
+				userId: req.user.id,
+				status: 'pending'
+			}
+		})
+		.spread(function (orderDetail, created) {
+			if (created){
+				orderDetail.quantity = productQty;
+			} else {
+				orderDetail.quantity = orderDetail.quantity + productQty;
+			}
+			orderDetail.price = productPrice * orderDetail.quantity;
+			orderDetail.save()
+			.then(function (savedDetail) {
+				res.send(savedDetail);
+			})
+		})
+	}*/
+
+})
