@@ -25,7 +25,7 @@ describe('Order Model', function () {
     describe('CRUD orders', function () {
     	var order = 
 	    	{
-				id: 011,
+				id: 11,
 		        status: 'paid',
 		        billing_address: '41 Rockville Drive Holland, MI 49423',
 		        shipping_address: '41 Rockville Drive Holland, MI 49423',
@@ -41,13 +41,18 @@ describe('Order Model', function () {
 				}]
 			}
 
-        it('Total Getter Test Test', function (done) {
+        it('Total Getter Test Test and creation of object with products', function (done) {
 
         	Order.create(order, 
 					{
 					  include: [ Product ]
 					})
-			.then(created=>OrderDetail.findAll())
+			.then(function(created){
+				expect(created.id).to.equal(11);
+				expect(created.products).to.be.an.instanceOf(Array);
+				expect(created.products[0].title).to.equal("setFire");
+				return OrderDetail.findAll()
+			})
 			.then(function(foundOrderDetail){
 				return foundOrderDetail[0].update({price: 4000, quantity: 5})
 			})
