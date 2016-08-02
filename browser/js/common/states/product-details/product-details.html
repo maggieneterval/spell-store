@@ -21,9 +21,9 @@
 		                <label>Review</label>
 		                <input class= "form-control" type="text" name="content" ng-model="newReview.content" ng-minlength="4" required/>
 		        </div>
-		        <magic-rating></magic-rating>
+		        <magic-rating value="rate" ng-model="newReview.rate"></magic-rating>
 				<pre><code>
-			      {{ reviewForm.rating }}
+			      {{ reviewForm.rate }}
 			    </code></pre>
 		        <button ng-disabled='!currentUser'>Submit</button>
 
