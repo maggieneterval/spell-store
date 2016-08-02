@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>Checkout form:</h2>
+    <form name="checkoutForm">
+        <div class="form-group">
+            <label for="full-name">Full name:</label>
+                <input ng-model="checkout.fullName" type="text" class="form-control" id="full-name" required placeholder="Harry Potter" />
+            <label for="email">Email:</label>
+                <input ng-model="checkout.email" type="text" class="form-control" id="email" required placeholder="harry@potter.com" />
+            <label for="billing-address">Billing address:</label>
+                <textarea ng-model="checkout.billingAddress" type="textarea" class="form-control" id="billing-address" required
+                placeholder="4 Privet Drive, Little Whinging, Surrey"></textarea>
+            <label for="shipping-address">Shipping address:</label>
+                <textarea ng-model="checkout.shippingAddress" type="textarea" class="form-control" id="shipping-address" required placeholder="4 Privet Drive, Little Whinging, Surrey"></textarea>
+            <label for="credit-card">Credit card number:</label>
+                <input ng-model="checkout.ccnumber" type="text" class="form-control" id="credit-card" required placeholder="4111 1111 1111 1111" />
+            <label for="cvv">CVV:</label>
+                <input ng-model="checkout.cvv" type="text" class="form-control" id="cvv" required placeholder="123"/>
+            <label for="expiration-date">Credit card expiration date:</label>
+                <input ng-model="checkout.expiration" type="date" id="expiration-date" class="form-control" required />
+            <br>
+            <button ng-click="submitCheckout()" type="submit" class="btn btn-primary">Complete order
+            </button>
+        </div>
+    </form>
+</div>

@@ -189,7 +189,7 @@ var seedProducts = function () {
         {
             title: 'Engorement Charm',
             category: 'Charm',
-            description: 'A charm that causes the target to swell immensely.[1] If the caster attempts to engorge the target beyond a certain point it will violently explode. Although this spell is safe to use on animals, it is not recommended until the counter-charm has been perfected. It appears as a circle of icy blue light emanating from the tip of the wand, much like a torch.[1] Anything within this circle will grow exponentially, bouncing and shivering',
+            description: 'A charm that causes the target to swell immensely. If the caster attempts to engorge the target beyond a certain point it will violently explode. Although this spell is safe to use on animals, it is not recommended until the counter-charm has been perfected. It appears as a circle of icy blue light emanating from the tip of the wand, much like a torch. Anything within this circle will grow exponentially, bouncing and shivering',
             price: '20000',
             photo: generatePhoto(),
             deliverable : 'Engorgio',
@@ -211,7 +211,7 @@ var seedProducts = function () {
          {
             title: 'Explosion Curse',
             category: 'Curse',
-            description: 'A curse used to produce immense explosions, blasting the target apart with a burst of blue light[4]; it has enough force to throw people into walls.',
+            description: 'A curse used to produce immense explosions, blasting the target apart with a burst of blue light; it has enough force to throw people into walls.',
             price: '110000',
             photo: generatePhoto(),
             deliverable : 'Expulso',
@@ -222,7 +222,7 @@ var seedProducts = function () {
           {
             title: 'Bone Mending Spell',
             category: 'Healing Spell',
-            description: 'is a spell used to bandage and splint broken bones[2]. It apparently eases pain as well[1]. It was used by Remus Lupin in the spring of 1994 on Ron Weasley to support Wesley\'s broken leg',
+            description: 'is a spell used to bandage and splint broken bones. It apparently eases pain as well. It was used by Remus Lupin in the spring of 1994 on Ron Weasley to support Wesley\'s broken leg',
             price: '150000',
             photo: generatePhoto(),
             deliverable : 'Ferula',
@@ -332,15 +332,166 @@ var seedProducts = function () {
         {
             title: 'Teeth Growing Hex',
             category: 'Hex',
-            description: 'A hex which causes the teeth to elongate at a grotesque, alarming rate[1]. The Shrinking Charm can be used to counteract this spell.',
+            description: 'A hex which causes the teeth to elongate at a grotesque, alarming rate. The Shrinking Charm can be used to counteract this spell.',
             price: '8000',
             photo: generatePhoto(),
             deliverable : 'Densaugeo',
             inventory: 10
 
+        },
+
+        {
+            title: 'Horn Growing Hex',
+            category: 'Hex',
+            description: 'A hex that causes the target to grow antlers. Gilbert Wimple from the Committee on Experimental Charms presumably had this spell used on him, as he had large horns growing from his head before the 1994 Quidditch World Cup.',
+            price: '1000',
+            photo: generatePhoto(),
+            deliverable : 'Anteoculatia',
+            inventory: 10
+
+        },
+
+        {
+            title: 'Tickling Hex',
+            category: 'Hex',
+            description: 'A is a hex that tickles and weakens the target. It manifested itself in purple, hand-shaped ribbons of light that wrapped around the target and tickled them.',
+            price: '18000',
+            photo: generatePhoto(),
+            deliverable : 'Titillando',
+            inventory: 10
+
+        },
+
+        {
+            title: 'Impediment Jinx',
+            category: 'Jinx',
+            description: 'A jinx that slows the target. Its effect is only temporary, lasting about ten seconds. Although it is capable of freezing a wasp in mid-air, it is ineffective against lethifolds. It was also ineffective against Acromantula (or some variant of giant spider, anyway) and Blast-Ended Skrewts unless it happens to hit them on their underbellies, which have no protective armour. The jinx will usually simply immobilize a target, it can also be used to throw a target backward or simply decrease the velocity of the victim\'s movement, and can also levitate them.',
+            price: '15000',
+            photo: generatePhoto(),
+            deliverable : 'Impedimenta',
+            inventory: 10
+
+        },
+
+        {
+            title: 'Jelly-Leg Jinx',
+            category: 'Jinx',
+            description: 'A spell that causes the victim\'s legs to collapse. This curse is covered in Curses and Counter-Curses by Professor Vindictus Viridian.',
+            price: '15000',
+            photo: generatePhoto(),
+            deliverable : 'Locomotor Wibbly',
+            inventory: 10
+        },
+
+        {
+            title: 'Pumpkin Head Jinx',
+            category: 'Jinx',
+            description: 'A jinx that encases the victim\'s head in a pumpkin, although it appears to those watching to transform the victim\'s head into a pumpkin. The pumpkin can be shattered to free the victim, or can fall apart on its own after a short time.',
+            price: '13000',
+            photo: generatePhoto(),
+            deliverable : 'Melofors',
+            inventory: 10
+        },
+
+        {
+            title: 'Worm Jinx',
+            category: 'Jinx',
+            description: 'A transforming jinx used to transfigure things into worms. Vampyr Mosps are especially susceptible to this spell, and any spell cast on them whilst they are in their transformed state will cause them to explode and produce certain candies.',
+            price: '9000',
+            photo: generatePhoto(),
+            deliverable : 'Vermiculus',
+            inventory: 10
+        },
+
+          {
+            title: 'Knockback Jinx',
+            category: 'Jinx',
+            description: 'A jinx that can be used to physically repel an opponent, knock away an object, blast apart fragile objects and active magically charmed switches. The Knockback Jinx feels like a blow to the chest, knocking its victim back, along with "a loud bang." The Knockback Jinx can be rebounded to its caster by means of the Shield Charm, as many other spells can, or simply dodged.',
+            price: '9500',
+            photo: generatePhoto(),
+            deliverable : 'Flipendo',
+            inventory: 10
+        },
+
+        {
+            title: 'Curse of the Bogies',
+            category: 'Curse',
+            description: 'A curse that gives the recipient a strong cold, that can make him or her collapse if not treated, as well as an extremely runny nose. No further casts of this curse have any additional effect on the target, except the Tria version, but if the Duo or Tria modifiers are used in addition to the Uno variation, then the version of the spell with the highest power will take effect.',
+            price: '20000',
+            photo: generatePhoto(),
+            deliverable : 'Mucus ad Nauseam',
+            inventory: 10
+        },
+
+         {
+            title: 'Doubling Curse',
+            category: 'Curse',
+            description: 'A spell used to duplicate an object, creating an exact replica of the target entity. It can also be used to bewitch an object into multiplying repeatedly when touched. The Doubling Charm was invented by a pair of reclusive twin witches, Helixa and Syna Hyslop, who used it to create duplicates of every item inside their mansion, in which they lived together their whole lives. After their deaths, their relatives finally learned of this practise, discovering two, duplicated sets of hand-written instructions for the spell, one left by each twin. There was much debate over whether a copy created with the Gemino Curse held the same value as the original, as the two items were impossible to tell apart at first, being identical to one another. However, over time, the copy tended to rot or tarnish more quickly than the original, making it possible to identify eventually.',
+            price: '23000',
+            photo: generatePhoto(),
+            deliverable : 'Gemino',
+            inventory: 10
+        },
+
+        {
+            title: 'Mending Spell',
+            category: 'Healing Spell',
+            description: 'A healing spell that heals relatively minor injuries such as broken noses and split lips.',
+            price: '10000',
+            photo: generatePhoto(),
+            deliverable : 'Episkey',
+            inventory: 10
+        },        
+
+        {
+            title: 'Magical Ailment Reversal Spell',
+            category: 'Healing Spell',
+            description: 'A healing spell that reverts minor magically-induced ailments, such as paralysis and poisoning.',
+            price: '8000',
+            photo: generatePhoto(),
+            deliverable : 'Reparifors',
+            inventory: 10
+        }, 
+
+          {
+            title: 'Gash Healing Spell',
+            category: 'Healing Spell',
+            description: 'A healing spell and counter-curse to the Sectumsempra Spell, both of which were invented by Professor Severus Snape under his alias of "Half-Blood Prince". For maximum effect of the spell, the incantation had to be repeated thrice; firstly slowing the flow of blood to prevent death by exsanguination; the second to clear residue and begin to heal the wounds; and the third to fully knit the wounds, although dittany had to be applied to prevent scarring.',
+            price: '11000',
+            photo: generatePhoto(),
+            deliverable : 'Vulnera Sanentur',
+            inventory: 10
+        }, 
+
+        {
+            title: 'Muggle-Repelling Spell',
+            category: 'Protective enchantment',
+            description: 'A spell that repells Muggles from an area. "Muggle-Repelling Charms on every inch of it. Every time Muggles have got anywhere near here all year, they\'ve suddenly remembered urgent appointments and had to dash away again." —Arthur Weasley',
+            price: '19000',
+            photo: generatePhoto(),
+            deliverable : 'Repello Muggletum',
+            inventory: 10
+        },
+
+        {
+            title: 'Hex Deflection',
+            category: 'Protective enchantment',
+            description: 'A defensive spell which presumably deflects hexes from an area.',
+            price: '6000',
+            photo: generatePhoto(),
+            deliverable : 'Salvio hexia',
+            inventory: 10
+        },
+
+        {
+            title: 'Muffling Spell',
+            category: 'Protective enchantment',
+            description: 'A spell used to fill the ears of any person in the vicinity of the caster with an unidentifiable buzzing sound so as to allow conversing without being overheard. The spell was invented by Severus Snape and recorded during his time as a student at Hogwarts School of Witchcraft and Wizardry.',
+            price: '5000',
+            photo: generatePhoto(),
+            deliverable : 'Muffliato',
+            inventory: 10
         }
-
-
 
     ];
    
@@ -353,7 +504,6 @@ var seedProducts = function () {
 };
 
 module.exports = seedProducts;
-
 
 
 
