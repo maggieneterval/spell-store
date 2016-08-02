@@ -34,19 +34,15 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-    if (!req.user || !req.user.isAdmin){
-        res.status(403).send('Access denied.')
-    } else {
-        User.create({
-            username: req.body.email,
-            email: req.body.email,
-            password: req.body.password
-        })
-        .then(function (user) {
-            res.status(201).send(user)
-        })
-        .catch(next);
-    }
+    User.create({
+        username: req.body.email,
+        email: req.body.email,
+        password: req.body.password
+    })
+    .then(function (user) {
+        res.status(201).send(user)
+    })
+    .catch(next);
 });
 
 router.put('/:id', function (req, res, next) {

@@ -30,7 +30,7 @@ router.get('/viewcart', function (req, res, next) {
 		} else {
 			Order.scope('populated').findOrCreate({
 				where: {
-					userId: req.session.cart.id,
+					id: req.session.cart.id,
 					status: 'pending'
 				}
 			})

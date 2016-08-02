@@ -6,11 +6,12 @@ app.config(function ($stateProvider) {
     })
 });
 
-app.controller('CheckoutCtrl', function ($scope, OrderFactory) {
+app.controller('CheckoutCtrl', function ($scope, OrderFactory, $state) {
     $scope.submitCheckout = function () {
         OrderFactory.checkoutCart($scope.checkout)
         .then(function (res) {
             console.log(res);
+            $state.go('home')
         })
     }
 });
