@@ -4,7 +4,7 @@ var User = db.model('user');
 var seedUsers = function () {
 
     var users = [
-        {   
+        {
             username: 'joseph',
             email: 'testing@fsa.com',
             password: 'password',
@@ -15,6 +15,7 @@ var seedUsers = function () {
             email: 'obama@gmail.com',
             password: 'potus',
             isRegistered: true,
+            isAdmin: true
         },
         {
             username: 'Piper Halliwell',
