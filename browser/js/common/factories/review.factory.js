@@ -19,7 +19,7 @@ app.factory('ReviewFactory',function($http){
 
 		destroy: function(id){
 			return $http.delete('/api/reviews/'+id)
-			.then(getData);
+			.then(getData)
 		},
 
 		add: function(review){

@@ -1,10 +1,10 @@
 <div class="container" ng-controller="CartCtrl">
     <div class="row">
         <div class="col-md-3 spell-category-img">
-            <img src="{{product.photo}}"></img>
+            <img ui-sref='productDetails({id:product.id})' src="{{product.photo}}"></img>
         </div>
         <div class="col-md-9">
-            <h2>{{product.title}}</h2>
+            <h2 ui-sref='productDetails({id:product.id})'>{{product.title}}</h2>
             <p>Category: {{product.category}}</p>
             <p>{{product.description}}</p>
 
@@ -25,6 +25,7 @@
                     <option ng-repeat="n in [1, 2, 3, 4, 5]">{{n}}</option>
                 </select>
                 <button type="submit">Add to Cauldron</button>
+                <button ui-sref='productDetails({id:product.id})'>Details</button>
             </form>
         </div>
     </div>
