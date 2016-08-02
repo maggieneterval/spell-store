@@ -28,7 +28,6 @@ describe('Order Routes', function () {
             .expect(200)
             .end(function(err, res) {
                if(err) return done(err);
-               console.log("this is the user", res.body);
                done();
             });
         })
@@ -83,24 +82,12 @@ describe('Order Routes', function () {
 
         it('GET One', function (done) {
             agent
-            .get('/api/orders/2')
+            .get('/api/orders/'+orderB.id)
             .expect(200)
             .end(function (err, res) {
                 if(err) return done(err);
                 expect(res.body).to.be.instanceof(Object);
                 expect(res.body.billing_address).to.equal(orderB.billing_address);
-                done();
-            });
-        });
-
-        it('GET One', function (done) {
-            agent
-            .get('/api/orders/2')
-            .expect(200)
-            .end(function (err, res) {
-                if(err) return done(err);
-                expect(res.body).to.be.instanceof(Object);
-                expect(res.body.billing_address).to.equal('8146 Augusta Street Floral Park, NY 11001');
                 done();
             });
         });
