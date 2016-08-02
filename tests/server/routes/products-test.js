@@ -8,7 +8,7 @@ var supertest = require('supertest');
 
 describe('Product Routes', function () {
 
-    var app, Product, agent;
+    var app, Product, User, agent;
 
     beforeEach('Sync DB', function () {
         return db.sync({force: true});
@@ -17,6 +17,7 @@ describe('Product Routes', function () {
     beforeEach('Create app', function () {
         app = require('../../../server/app')(db);
         Product = db.model('product');
+        User = db.model('user');
         agent = supertest.agent(app);
     });
 
@@ -26,7 +27,6 @@ describe('Product Routes', function () {
 
         beforeEach(function () {
             return Product.create({
-                id: 001,
                 title: 'productA',
                 category: 'Charm'
             })
@@ -37,7 +37,6 @@ describe('Product Routes', function () {
 
         beforeEach(function () {
             return Product.create({
-                id: 002,
                 title: 'productB',
                 category: 'Hex'
             })
@@ -48,7 +47,6 @@ describe('Product Routes', function () {
 
         beforeEach(function () {
             return Product.create({
-                id: 003,
                 title: 'productC',
                 category: 'Jinx'
             })
