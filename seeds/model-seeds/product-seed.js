@@ -504,15 +504,3 @@ var seedProducts = function () {
 };
 
 module.exports = seedProducts;
-
-
-
-
-
-
-
-
-
-
-
-

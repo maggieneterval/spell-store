@@ -30,7 +30,7 @@
 		</form>
 		</div>
 		<br/>
-		<div class="col-lg-12" ng-repeat = "review in reviews">
+		<div class="col-lg-12" ng-repeat="review in reviews">
 	        <review-item review='review' isReadonly={{true}}>
 	        </review-item>
 	        <button ng-show='authorizedUser(review.userId)' ng-click='edit(review.id)'>Edit</button>

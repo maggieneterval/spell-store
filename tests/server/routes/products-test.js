@@ -18,6 +18,7 @@ describe('Product Routes', function () {
         app = require('../../../server/app')(db);
         User = db.model('user');
         Product = db.model('product');
+        User = db.model('user');
         agent = supertest.agent(app);
         User.create({isRegistered: true, username: "irisy", email: "iris@gmail.com", password: "forest", isAdmin: true})
         .then(function(user){
@@ -42,7 +43,6 @@ describe('Product Routes', function () {
 
         beforeEach(function () {
             return Product.create({
-                id: 001,
                 title: 'productA',
                 category: 'Charm'
             })
@@ -53,7 +53,6 @@ describe('Product Routes', function () {
 
         beforeEach(function () {
             return Product.create({
-                id: 002,
                 title: 'productB',
                 category: 'Hex'
             })
@@ -64,7 +63,6 @@ describe('Product Routes', function () {
 
         beforeEach(function () {
             return Product.create({
-                id: 003,
                 title: 'productC',
                 category: 'Jinx'
             })

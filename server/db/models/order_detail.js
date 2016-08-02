@@ -18,3 +18,4 @@ module.exports = db.define('order_detail', {
 	}
 
 });
+

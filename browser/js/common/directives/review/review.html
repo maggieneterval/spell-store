@@ -1,27 +1,25 @@
-
 <div class="container-fluid">
-        <div class="row panel panel-primary">
-                <div class="panel-heading">
-                        <span class=" panel-title" >
-                                {{review.user.username}}
-                        </span>
-                        <span class=" panel-title" >
-                                Rating: 
-                                <magic-rating rate='{{review.rating}}'></magic-rating>
-                        </span>
-                        <span class=" panel-title">
-                                Date: 
-                                <span ng-bind="review.date | date:'MM/dd/yyyy'"></span> 
-                        </span>
-                </div>
-                <div class="panel-body">
-                        <div class="row">
-                                <div class="col-lg-12">
-                                        {{review.content}}
-                                </div>
-                        </div>
-
-                </div>
+    <div class="row panel panel-primary">
+        <div class="panel-heading">
+            <span class=" panel-title" >
+                {{review.user.username}}
+            </span>
+            <span class=" panel-title" >
+                Rating: 
+                <magic-rating rate='{{review.rating}}'></magic-rating>
+            </span>
+            <span class=" panel-title">
+                Date: 
+                <span ng-bind="review.date | date:'MM/dd/yyyy'"></span> 
+            </span>
         </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    {{review.content}}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 

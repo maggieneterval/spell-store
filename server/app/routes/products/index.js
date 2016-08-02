@@ -39,6 +39,27 @@ router.get('/', function (req, res, next) {
         .catch(next);
 });
 
+router.get('/:id', function (req, res, next) {
+    Product.findOne({
+        where: {
+        id: req.params.id
+        },
+        include: [Review]
+    })
+    .then(function (products) {
+        res.status(200).send(products);
+    })
+    .catch(next);
+});
+
+router.get('/', function (req, res, next) {
+    Product.findAll()
+    .then(function (allProducts) {
+        res.status(200).send(allProducts);
+    })
+    .catch(next);
+});
+
 router.post('/', function (req, res, next) {
     if (!req.user || !req.user.isAdmin){
         res.status(403).send('Access denied.')
