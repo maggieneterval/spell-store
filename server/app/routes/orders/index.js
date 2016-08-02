@@ -5,12 +5,27 @@ var Order = db.model('order');
 var OrderDetails = db.model('order_detail');
 var Product = db.model('product');
 var User = db.model('user');
+var nodemailer = require('nodemailer');
 module.exports = router;
+
+ // create reusable transporter object using the default SMTP transport
+var transporter = nodemailer.createTransport('smtps://spellstorellc%40gmail.com:magicalme@smtp.gmail.com');
 
 router.put('/checkout', function (req, res, next) {
 
-	var checkoutForm = req.body;
+	//setup e-mail data with unicode symbols
+	var mailOptions = {
+	    from: 'Spell Store 👥" <spellstorellc%40gmail.com>', // sender address
+	    to: 'samanthalowe2010@gmail.com', // list of receivers
+	    subject: 'Hello ', // Subject line
+	    text: 'Wingarduim Leviosa', // plaintext body
+	    html: '<b>Wingardium leviosa</b>' // html body
+	};
 
+	// send mail with defined transport object
+
+	var checkoutForm = req.body;
+	console.log('Checkout form!!!!', checkoutForm)
 	if (req.user){
 		Order.findOne({
 			where: {
@@ -25,6 +40,15 @@ router.put('/checkout', function (req, res, next) {
 			order.shipping_status = 'pending';
 			order.save()
 			.then(function (savedOrder) {
+				console.log('SAVED ORDER!!!', savedOrder);
+				// mailOptions.to = checkoutForm.email;
+				// mailOptions
+				transporter.sendMail(mailOptions, function(error, info){
+				    if(error){
+				        return console.log(error);
+				    }
+				    console.log('Message sent: ' + info.response);
+				});
 				res.send('Completed checkout: ', savedOrder)
 			})
 		})
@@ -52,6 +76,12 @@ router.put('/checkout', function (req, res, next) {
 				order.save()
 				.then(function (savedOrder) {
 					req.session.cart = null;
+					transporter.sendMail(mailOptions, function(error, info){
+					    if(error){
+					        return console.log(error);
+					    }
+					    console.log('Message sent: ' + info.response);
+					});
 					res.send('Completed checkout: ', savedOrder);
 
 				})
