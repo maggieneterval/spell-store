@@ -21,8 +21,7 @@
             {{((product.price) % 493) % 29}} Knut[s]</p>
             <form ng-submit="addToCart()">
                 <label for="productQty">Qty:</label>
-                <select name="productQty" ng-model="productQty">
-                    <option ng-repeat="n in [1, 2, 3, 4, 5]">{{n}}</option>
+                <select ng-options="q for q in [1,2,3,4,5]" name="productQty" ng-model="productQty" ng-init="productQty=1">
                 </select>
                 <button type="submit">Add to Cauldron</button>
             </form>
