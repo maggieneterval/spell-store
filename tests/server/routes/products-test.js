@@ -14,11 +14,27 @@ describe('Product Routes', function () {
         return db.sync({force: true});
     });
 
-    beforeEach('Create app', function () {
+    beforeEach('Create app', function (done) {
         app = require('../../../server/app')(db);
+        User = db.model('user');
         Product = db.model('product');
         User = db.model('user');
         agent = supertest.agent(app);
+        User.create({isRegistered: true, username: "irisy", email: "iris@gmail.com", password: "forest", isAdmin: true})
+        .then(function(user){
+            agent
+            .post('/login')
+            .send({
+                email: 'iris@gmail.com',
+                password: 'forest'
+            })
+            .expect(200)
+            .end(function(err, res) {
+               if(err) return done(err);
+               console.log("this is the user", res.body);
+               done();
+            });
+        })
     });
 
     describe('CRUD products', function () {

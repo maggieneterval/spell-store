@@ -195,10 +195,10 @@ router.post('/', function(req, res, next){
 });
 
 router.get('/:id', function(req, res, next){
-    if (req.user.id === req.order.userId || req.user.isAdmin){
-        res.json(req.order);
-    } else {
-	res.status(403).send('Access denied.');
+	if(req.user.id === req.order.userId || req.user.isAdmin){
+		res.json(req.order);
+	}else{
+		res.status(403).send('Access denied.')
 	}
 })
 

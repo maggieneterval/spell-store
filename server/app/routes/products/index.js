@@ -7,15 +7,36 @@ var Review = db.model('review');
 module.exports = router;
 
 router.get('/category/:category', function (req, res, next) {
-    Product.findAll({
-        where: {
-            category: req.params.category
-        }
-    })
-    .then(function (products) {
-        res.status(200).send(products);
-    })
-    .catch(next);
+        Product.findAll({
+            where: {
+                category: req.params.category
+            }
+        })
+        .then(function (products) {
+            res.status(200).send(products);
+        })
+        .catch(next);
+});
+
+router.get('/:id', function (req, res, next) {
+        Product.findOne({
+            where: {
+            id: req.params.id
+            },
+            include: [Review]
+        })
+        .then(function (products) {
+            res.status(200).send(products);
+        })
+        .catch(next);
+});
+
+router.get('/', function (req, res, next) {
+        Product.findAll()
+        .then(function (allProducts) {
+            res.status(200).send(allProducts);
+        })
+        .catch(next);
 });
 
 router.get('/:id', function (req, res, next) {
