@@ -56,10 +56,12 @@ module.exports = db.define('user', {
             return crypto.randomBytes(16).toString('base64');
         },
         encryptPassword: function (plainText, salt) {
-            var hash = crypto.createHash('sha1');
-            hash.update(plainText);
-            hash.update(salt);
-            return hash.digest('hex');
+            if (plainText){
+                var hash = crypto.createHash('sha1');
+                hash.update(plainText);
+                hash.update(salt);
+                return hash.digest('hex');
+            }
         }
     },
     hooks: {
