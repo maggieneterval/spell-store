@@ -71,9 +71,13 @@ router.put('/cart', function (req, res, next) {
 })
 
 router.get('/', function(req,res,next){
-	Order.findAll({where: req.query})
-	.then(orders => res.json(orders))
-	.catch(next);
+	if (!req.user){
+        res.status(403).send('Access denied.')
+    }else{
+		Order.findAll({where: req.query})
+		.then(orders => res.json(orders))
+		.catch(next);
+	}
 });
 
 router.param('id', function (req, res, next, id) {
@@ -97,7 +101,11 @@ router.post('/', function(req, res, next){
 });
 
 router.get('/:id', function(req, res, next){
-	res.json(req.order);
+	if(req.user.id === req.order.userId || req.user.isAdmin){
+		res.json(req.order);
+	}else{
+		res.status(403).send('Access denied.')
+	}
 })
 
 router.put('/:id', function(req, res, next){

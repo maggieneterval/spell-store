@@ -14,7 +14,7 @@ var seedUsers = function () {
             username: 'obama',
             email: 'obama@gmail.com',
             password: 'potus',
-            isRegistered: true
+            isRegistered: true,
         },
         {
             username: 'Piper Halliwell',
