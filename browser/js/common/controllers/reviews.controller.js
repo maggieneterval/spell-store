@@ -18,8 +18,9 @@ app.controller('ReviewCtrl', function($scope, ReviewFactory, $state, AuthService
                         $scope.newReview.productId = productId;
       	      	ReviewFactory.add($scope.newReview)
       	      	.then(function(createdReview){
-      	      		$scope.reviews.push(createdReview);
-                              $scope.reviewForm = {};
+      	      		// $scope.reviews.push(createdReview);
+               //                $scope.reviewForm = {};
+               refresh(productId);
 
                         })
             }
@@ -43,4 +44,20 @@ app.controller('ReviewCtrl', function($scope, ReviewFactory, $state, AuthService
       		refresh(productId);
       	})
       };
+      $scope.max = 5;
+      $scope.isReadonly = false;
+      $scope.hoveringOver = function(value) {
+            $scope.overStar = value;
+            $scope.percent = 100 * (value / $scope.max);
+      };
+
+      $scope.ratingStates = [
+            {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
+            {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
+            {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
+            {stateOn: 'glyphicon-heart'},
+            {stateOff: 'glyphicon-off'}
+      ];
+
+
 })

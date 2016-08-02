@@ -15,13 +15,12 @@
 		        </div>
 		        <div class="form-group">
 		                <label>Rating</label>
-		                <input class="form-control" type="number" max="5" min="1" name="rating" ng-model="newReview.rating" required/>
+		                <rating ng-model="newReview.rating" name="rating" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" required></rating>
 		        </div>
 		        <div class="form-group">
 		                <label>Review</label>
 		                <input class= "form-control" type="text" name="content" ng-model="newReview.content" ng-minlength="4" required/>
 		        </div>
-		        <magic-rating value="rate" ng-model="newReview.rate"></magic-rating>
 				<pre><code>
 			      {{ reviewForm.rate }}
 			    </code></pre>
