@@ -123,16 +123,16 @@ router.get('/products/:id', function (req, res, next) {
 	})
 	.catch(next);
 
-})
+})/*
 
-/*
-This is how Laura advised me to set it up. It attaches the order detail to an order. Try uncommenting this and commenting the get request directly below this comment block to see the difference. I don't think I understand how to work with associations of populated scope well enough to know which approach is better.
-*/
-
-/*
-router.get('/', function(req, res, next){
-	Order.scope('populated').findAll({where: req.query})
-	.then(orders => res.json(orders))
+router.get('/users/:id', function (req, res, next) {
+	Order.scope('populated').findOne({
+		where: {
+			userId: req.params.id,
+			status: 'pending'
+		}
+	})
+	.then(orders => res.send(orders))
 	.catch(next);
-});
-*/
+
+})*/

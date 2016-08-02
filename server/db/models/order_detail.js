@@ -16,4 +16,12 @@ module.exports = db.define('order_detail', {
 	price: {
 		type: Sequelize.INTEGER
 	}
-});
+}/*,{
+    scopes: {
+        productInfo: () => ({ // function form lets us use to-be-defined models
+          include: [{
+            model: db.model('product')
+          }]
+        })
+    }
+}*/);
