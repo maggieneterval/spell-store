@@ -93,7 +93,7 @@ router.put('/checkout', function (req, res, next) {
 				    }
 				    console.log('Message sent: ' + info.response);
 				});
-				res.send('Completed checkout: ', ourOrder)
+				res.send(ourOrder)
 			})
 		})
 		.catch(next);
@@ -138,7 +138,7 @@ router.put('/checkout', function (req, res, next) {
 			    }
 			    console.log('Message sent: ' + info.response);
 			});
-			res.send('Completed checkout: ', ourOrder);
+			res.send(ourOrder);
 
 		})
 		.catch(next);
