@@ -5,7 +5,12 @@ var Order = db.model('order');
 var OrderDetails = db.model('order_detail');
 var Product = db.model('product');
 var User = db.model('user');
+var nodemailer = require('nodemailer');
 module.exports = router;
+
+
+ // create reusable transporter object using the default SMTP transport
+var transporter = nodemailer.createTransport('smtps://spellstorellc%40gmail.com:magicalme@smtp.gmail.com');
 
 router.get('/viewcart', function (req, res, next) {
 	if (req.user){
@@ -41,10 +46,22 @@ router.get('/viewcart', function (req, res, next) {
 	}
 })
 
+
 router.put('/checkout', function (req, res, next) {
 
 	var checkoutForm = req.body;
+	//setup e-mail data with unicode symbols
+	var mailOptions = {
+	    from: 'Spell Store 👥" <spellstorellc%40gmail.com>', // sender address
+	    // to: 'samanthalowe2010@gmail.com', // list of receivers
+	    subject: 'Your Spell Incantations', // Subject line
+	    text: 'Thank you for your spell order, ' + checkoutForm.fullName + '!', // plaintext body
+	    html: '<h3>Thank you for your spell order, ' + checkoutForm.fullName + '!</h3>' // html body
+	};
 
+	// send mail with defined transport object
+
+	console.log('Checkout form!!!!', checkoutForm)
 	if (req.user){
 		Order.findOne({
 			where: {
@@ -59,37 +76,69 @@ router.put('/checkout', function (req, res, next) {
 			order.shipping_status = 'pending';
 			order.save()
 			.then(function (savedOrder) {
-				res.send('Completed checkout: ', savedOrder)
+				return Order.scope('populated').findById(savedOrder.id);
+			})
+			.then(function (ourOrder) {
+				ourOrder.products.forEach(function (product, i) {
+					// console.log(`Product number ${i+1} is`, product.title, 'The incantation is: ', product.deliverable);
+					mailOptions.text += "\n Spell purchased: " + product.title + ". Incantation: " + product.deliverable + ".";
+					mailOptions.html += "<p>Spell purchased: " + product.title + ". Incantation: <b>" + product.deliverable + "</b>.</p>";
+				})
+				
+				mailOptions.to = checkoutForm.email;
+				// mailOptions
+				transporter.sendMail(mailOptions, function(error, info){
+				    if(error){
+				        return console.log(error);
+				    }
+				    console.log('Message sent: ' + info.response);
+				});
+				res.send('Completed checkout: ', ourOrder)
 			})
 		})
 	} else {
 		var createdUser;
-		User.create({
+		User.findOrCreate({where: {
 			username: checkoutForm.email,
 			email: checkoutForm.email,
-			password: checkoutForm.email
-		})
+			password: null
+		}})
 		.then(function (user) {
 			createdUser = user;
-			Order.findOrCreate({
+			return Order.findOrCreate({
 				where: {
 					id: req.session.cart.id,
 					status: 'pending'
 				}
 			})
-			.spread(function (order, ifCreated) {
-				order.status = 'complete';
-				order.billing_address = checkoutForm.billingAddress;
-				order.shipping_address = checkoutForm.shippingAddress;
-				order.shipping_status = 'pending';
-				order.userId = createdUser.id;
-				order.save()
-				.then(function (savedOrder) {
-					req.session.cart = null;
-					res.send('Completed checkout: ', savedOrder);
-
-				})
+		})
+		.spread(function (order, ifCreated) {
+			order.status = 'complete';
+			order.billing_address = checkoutForm.billingAddress;
+			order.shipping_address = checkoutForm.shippingAddress;
+			order.shipping_status = 'pending';
+			order.userId = createdUser.id;
+			return order.save();
+		})
+		.then(function (savedOrder) {
+			return Order.scope('populated').findById(savedOrder.id);
+		})
+		.then(function (ourOrder) {
+			ourOrder.products.forEach(function (product, i) {
+				// console.log(`Product number ${i+1} is`, product.title, 'The incantation is: ', product.deliverable);
+				mailOptions.text += "\n Spell purchased: " + product.title + ". Incantation: " + product.deliverable + ".";
+				mailOptions.html += "<p>Spell purchased: " + product.title + ". Incantation: <b>" + product.deliverable + "</b>.</p>";
 			})
+			req.session.cart = null;
+			mailOptions.to = checkoutForm.email;
+			transporter.sendMail(mailOptions, function(error, info){
+			    if(error){
+			        return console.log(error);
+			    }
+			    console.log('Message sent: ' + info.response);
+			});
+			res.send('Completed checkout: ', ourOrder);
+
 		})
 	}
 
