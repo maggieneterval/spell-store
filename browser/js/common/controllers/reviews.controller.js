@@ -18,10 +18,9 @@ app.controller('ReviewCtrl', function($scope, ReviewFactory, $state, AuthService
                         $scope.newReview.productId = productId;
       	      	ReviewFactory.add($scope.newReview)
       	      	.then(function(createdReview){
-      	      		// $scope.reviews.push(createdReview);
-               //                $scope.reviewForm = {};
-               refresh(productId);
-
+      	      		$scope.reviews.push(createdReview);
+                              $state.go('productDetails', {id: productId}, {reload: true})
+                             
                         })
             }
 
@@ -52,11 +51,7 @@ app.controller('ReviewCtrl', function($scope, ReviewFactory, $state, AuthService
       };
 
       $scope.ratingStates = [
-            {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
-            {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
-            {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
-            {stateOn: 'glyphicon-heart'},
-            {stateOff: 'glyphicon-off'}
+            {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'}
       ];
 
 

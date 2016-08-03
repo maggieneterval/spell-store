@@ -11,6 +11,13 @@ app.config(function ($stateProvider) {
       ReviewFactory.fetchOne($stateParams.reviewId)
       .then(function(review){
         $scope.review = review;
+        $scope.max = 5;
+        $scope.rating = review.rating;
+        $scope.isReadonly = false;
+        $scope.ratingStates = [
+        {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'}
+        ];
+
       })
       .catch(console.error())
 
@@ -24,6 +31,7 @@ app.config(function ($stateProvider) {
       		$state.go('productDetails', {id: productId}, {reload: true});
       	})
       }
+
     }
   })
 })
