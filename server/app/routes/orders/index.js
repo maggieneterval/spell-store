@@ -84,7 +84,7 @@ router.put('/checkout', function (req, res, next) {
 					mailOptions.text += "\n Spell purchased: " + product.title + ". Incantation: " + product.deliverable + ".";
 					mailOptions.html += "<p>Spell purchased: " + product.title + ". Incantation: <b>" + product.deliverable + "</b>.</p>";
 				})
-				
+
 				mailOptions.to = checkoutForm.email;
 				// mailOptions
 				transporter.sendMail(mailOptions, function(error, info){
@@ -96,6 +96,7 @@ router.put('/checkout', function (req, res, next) {
 				res.send('Completed checkout: ', ourOrder)
 			})
 		})
+		.catch(next);
 	} else {
 		var createdUser;
 		User.findOrCreate({where: {
@@ -140,6 +141,7 @@ router.put('/checkout', function (req, res, next) {
 			res.send('Completed checkout: ', ourOrder);
 
 		})
+		.catch(next);
 	}
 
 })
