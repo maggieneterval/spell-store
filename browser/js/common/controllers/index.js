@@ -46,7 +46,7 @@ app.controller('MainCtrl', function ($scope, $rootScope, $state, AuthService, AU
         {
             name: "Hexes",
             image: "/images/deathlyhallows.jpg",
-            description: "A hex is one of the seven known spell types. They are affiliated with Dark Magic, darker than a jinx but not as dark as a curse, and generally causes moderate suffering to the victim."
+            description: "A hex is also affiliated with Dark Magic, darker than a jinx but not as dark as a curse. It generally causes moderate suffering to the victim."
         },
 
         {
