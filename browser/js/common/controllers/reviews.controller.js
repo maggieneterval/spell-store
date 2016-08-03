@@ -19,8 +19,8 @@ app.controller('ReviewCtrl', function($scope, ReviewFactory, $state, AuthService
       	      	ReviewFactory.add($scope.newReview)
       	      	.then(function(createdReview){
       	      		$scope.reviews.push(createdReview);
-                              $scope.reviewForm = {};
-
+                              $state.go('productDetails', {id: productId}, {reload: true})
+                             
                         })
             }
 
@@ -43,4 +43,16 @@ app.controller('ReviewCtrl', function($scope, ReviewFactory, $state, AuthService
       		refresh(productId);
       	})
       };
+      $scope.max = 5;
+      $scope.isReadonly = false;
+      $scope.hoveringOver = function(value) {
+            $scope.overStar = value;
+            $scope.percent = 100 * (value / $scope.max);
+      };
+
+      $scope.ratingStates = [
+            {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'}
+      ];
+
+
 })

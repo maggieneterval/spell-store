@@ -7,7 +7,7 @@
 			</div>
 			<div class="panel-body">
 				<p>Order Id: {{order.id}}</p>
-				<p>Date: {{order.createdAt}}</p>
+				<p>Date: {{order.createdAt | date:'MM/dd/yyyy'}}</p>
 				<p>Billing Address: {{order.billing_address}}</p>
 				<p>Shipping Address: {{order.shipping_address}}</p>
 				<p>Order Total: {{order.total}}</p>

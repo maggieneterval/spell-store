@@ -5,8 +5,8 @@
                 {{review.user.username}}
             </span>
             <span class=" panel-title" >
-                Rating: 
-                <magic-rating rate='{{review.rating}}'></magic-rating>
+                Rating:
+                <rating ng-model='rating' max="max" readonly="isReadonly"></rating> 
             </span>
             <span class=" panel-title">
                 Date: 
@@ -21,5 +21,6 @@
             </div>
         </div>
     </div>
+    <br></br>
 </div>
 
